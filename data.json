@@ -68,5 +68,16 @@
       "sales": 0,
       "note": ""
     }
+  ],
+  "Norway": [
+    {
+      "type": "distributor",
+      "name": "BudMates",
+      "email": "",
+      "city": "",
+      "state": "",
+      "note": "",
+      "sales": 3000
+    }
   ]
 }
