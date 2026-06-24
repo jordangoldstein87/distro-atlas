@@ -62,6 +62,25 @@ USA, West Coast Wholesale, Los Angeles, CA, 12000, net-30 terms
 5. Share that link with your team.
 
 ## Update the map for everyone
+
+### Option A — Auto-publish (recommended)
+Turn on **⚙ Auto-publish** in the panel footer once, and every add / delete commits
+`data.json` to the repo for you — the live map updates for everyone with no manual steps.
+
+Setup (one time, per browser):
+1. Create a **fine-grained personal access token** at
+   <https://github.com/settings/personal-access-tokens/new>:
+   - **Resource owner:** your account · **Repository access:** *Only select repositories* → `distro-atlas`
+   - **Permissions → Repository permissions → Contents:** *Read and write* (leave everything else off)
+2. In the app, click **⚙ Auto-publish**, paste the token, confirm owner/repo/branch, tick
+   **Enable auto-publish**, and **Save & publish now**. A green "Connected ✓" confirms it works.
+3. The footer then shows a live status (`Publishing… / Published ✓`) after each edit.
+
+The token is stored **only in your browser** (localStorage) and is never written into the repo
+or the shared dataset. Because the repo is public, treat the token as sensitive — scope it to this
+one repo with Contents-only access, and revoke it from GitHub settings if a browser is shared.
+
+### Option B — Manual
 1. Open the page and edit distributors (or use **Bulk add**).
 2. Click **⤓ Save data.json** to download the updated dataset.
 3. In the repo, upload the new `data.json` (replacing the old one) and commit.
@@ -69,6 +88,6 @@ USA, West Coast Wholesale, Los Angeles, CA, 12000, net-30 terms
 
 ## How saving works
 - The shared `data.json` in the repo is what new viewers see.
-- Edits in the browser are kept locally (per person, per browser) so a refresh won't lose them — they are **not** shared until you publish a new `data.json`.
+- Edits in the browser are kept locally (per person, per browser) so a refresh won't lose them — with **Auto-publish** on they are also committed to `data.json`; otherwise they are **not** shared until you publish a new `data.json` manually.
 
 > **Privacy note:** GitHub Pages on a free account requires a **public** repo, so anyone with the link can see your distributor data. If that list is sensitive, use a private repo with GitHub Pro/Team, or ask about a password-protected host.

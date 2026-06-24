@@ -198,6 +198,13 @@
 
   .panel .foot{flex:0 0 auto;border-top:1px solid var(--line);padding:12px 14px;display:flex;flex-wrap:wrap;gap:8px}
   .panel .foot .btn{flex:1 1 calc(50% - 4px);text-align:center;padding:9px 8px;font-size:12.5px}
+  .pub-status{flex:1 1 100%;font-family:var(--mono);font-size:11px;letter-spacing:.03em;
+    color:var(--faint);padding:1px 2px 0;display:none}
+  .pub-status.ok{color:var(--green-bright)} .pub-status.saving{color:var(--accent)} .pub-status.err{color:var(--red-bright)}
+  .pub-chk{display:flex !important;align-items:center;gap:8px;color:var(--text);font-size:13px;
+    text-transform:none;letter-spacing:0;cursor:pointer;margin-top:2px}
+  .pub-chk input{width:auto}
+  .warn{color:var(--accent);font-size:11.5px;margin:8px 0 0;line-height:1.5}
 
   /* bulk modal */
   .overlay{position:fixed;inset:0;background:rgba(4,6,9,.62);z-index:80;display:none;
@@ -282,6 +289,8 @@
         <button class="btn ghost" id="exportBtn">Export CSV</button>
         <button class="btn ghost" id="saveJsonBtn">⤓ Save data.json</button>
         <button class="btn ghost" id="loadSharedBtn">↻ Load shared</button>
+        <button class="btn ghost" id="pubBtn">⚙ Auto-publish</button>
+        <div class="pub-status" id="pubStatus"></div>
       </div>
     </aside>
   </div>
@@ -303,6 +312,31 @@
     <div class="m-foot">
       <button class="btn ghost" id="bulkCancel">Cancel</button>
       <button class="btn primary" id="bulkApply">Add to map</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="pubOverlay">
+  <div class="modal">
+    <div class="m-head">
+      <h2>Auto-publish to GitHub</h2>
+      <button class="x" id="pubCloseX">×</button>
+    </div>
+    <div class="m-body">
+      <p class="hint">When enabled, every add / delete commits <code>data.json</code> to your repo, so the live map updates for everyone — no manual save. Your token is stored <strong>only in this browser</strong> and is never written into the repo or shared dataset.</p>
+      <div class="addform">
+        <div class="row"><label>GitHub token (fine-grained PAT · Contents: Read &amp; write)</label><input id="pubToken" type="password" autocomplete="off" placeholder="github_pat_… (paste here)" /></div>
+        <div class="row"><label>Owner</label><input id="pubOwner" type="text" placeholder="jordangoldstein87" /></div>
+        <div class="row"><label>Repo</label><input id="pubRepo" type="text" placeholder="distro-atlas" /></div>
+        <div class="row"><label>Branch</label><input id="pubBranch" type="text" placeholder="main" /></div>
+        <label class="pub-chk"><input type="checkbox" id="pubEnabled" /> Enable auto-publish</label>
+      </div>
+      <p class="warn">⚠ This repo is public and the token grants write access to it from this browser. Use a <strong>fine-grained</strong> token scoped to only this repo with <strong>Contents: Read and write</strong>, and nothing else.</p>
+      <div class="import-report" id="pubReport"></div>
+    </div>
+    <div class="m-foot">
+      <button class="btn ghost" id="pubCancel">Cancel</button>
+      <button class="btn primary" id="pubSave">Save &amp; publish now</button>
     </div>
   </div>
 </div>
@@ -356,6 +390,79 @@ const LS_KEY = 'distro_atlas_v1';
 function saveData(){
   try{ localStorage.setItem(LS_KEY, JSON.stringify(data)); }catch(e){}
 }
+
+// ---------- auto-publish to GitHub ----------
+// Commits data.json to the repo via the GitHub Contents API on every edit, so
+// the shared/live map updates without a manual download + commit. The token is
+// kept ONLY in this browser's localStorage and is never written into the repo.
+const PUB_KEY = 'distro_atlas_pub_v1';
+let pub = loadPub();
+let pubSha = null;          // last known sha of the remote data.json
+let pubTimer = null;
+function loadPub(){
+  try{ const s=localStorage.getItem(PUB_KEY); if(s) return Object.assign(defaultPub(), JSON.parse(s)); }catch(e){}
+  return defaultPub();
+}
+function defaultPub(){ return { enabled:false, token:'', owner:'jordangoldstein87', repo:'distro-atlas', branch:'main', path:'data.json' }; }
+function savePub(){ try{ localStorage.setItem(PUB_KEY, JSON.stringify(pub)); }catch(e){} }
+function b64(str){ return btoa(unescape(encodeURIComponent(str))); }
+function ghHeaders(){ return { 'Authorization':'Bearer '+pub.token, 'Accept':'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28' }; }
+function contentsUrl(withRef){
+  let u = `https://api.github.com/repos/${pub.owner}/${pub.repo}/contents/${encodeURIComponent(pub.path)}`;
+  if(withRef) u += `?ref=${encodeURIComponent(pub.branch)}`;
+  return u;
+}
+function setPubState(state, msg){
+  const el=document.getElementById('pubStatus'); if(!el) return;
+  if(!pub.enabled){ el.style.display='none'; el.textContent=''; return; }
+  el.style.display='';
+  const m={ pending:['saving','Saving…'], saving:['saving','Publishing…'], saved:['ok','Published ✓'],
+            idle:['ok','Auto-publish on'], error:['err','Publish failed'+(msg?': '+msg:'')] };
+  const [cls,txt]=m[state]||['',''];
+  el.className='pub-status '+cls;
+  el.textContent='● '+txt;
+}
+async function fetchSha(){
+  const r=await fetch(contentsUrl(true),{headers:ghHeaders()});
+  if(r.status===404) return null;          // file not created yet
+  if(!r.ok) throw new Error('GET '+r.status);
+  return (await r.json()).sha;
+}
+async function putData(){
+  const body={ message:'Update distributor data', content:b64(JSON.stringify(data,null,2)), branch:pub.branch };
+  if(pubSha) body.sha=pubSha;
+  let r=await fetch(contentsUrl(false),{method:'PUT',headers:{...ghHeaders(),'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(r.status===409){                       // someone else changed it — refetch sha and retry once
+    pubSha=await fetchSha();
+    if(pubSha) body.sha=pubSha; else delete body.sha;
+    r=await fetch(contentsUrl(false),{method:'PUT',headers:{...ghHeaders(),'Content-Type':'application/json'},body:JSON.stringify(body)});
+  }
+  if(!r.ok){ let d=''; try{ d=(await r.json()).message; }catch(e){} throw new Error((r.status)+(d?' '+d:'')); }
+  pubSha=(await r.json()).content.sha;
+}
+async function publishNow(){
+  if(!pub.enabled || !pub.token) return false;
+  try{
+    setPubState('saving');
+    if(pubSha===null) pubSha=await fetchSha();
+    await putData();
+    setPubState('saved');
+    return true;
+  }catch(e){
+    console.error('auto-publish failed', e);
+    setPubState('error', e.message);
+    return false;
+  }
+}
+// debounce so a burst of edits results in a single commit
+function schedulePublish(){
+  if(!pub.enabled || !pub.token){ setPubState('idle'); return; }
+  setPubState('pending');
+  clearTimeout(pubTimer);
+  pubTimer=setTimeout(publishNow, 1200);
+}
+// call after any mutation: persist locally, then queue a publish
+function persist(){ saveData(); schedulePublish(); }
 async function fetchShared(){
   try{ const r = await fetch('./data.json?' + Date.now()); if(r.ok) return await r.json(); }catch(e){}
   return null;
@@ -633,13 +740,13 @@ function addDistro(){
   const note=document.getElementById('dNote').value.trim();
   if(!data[selected]) data[selected]=[];
   data[selected].push({name, city, state, sales, note});
-  saveData(); refreshColors(); updateStats(); renderPanel();
+  persist(); refreshColors(); updateStats(); renderPanel();
 }
 function removeDistro(i){
   if(!data[selected]) return;
   data[selected].splice(i,1);
   if(data[selected].length===0) delete data[selected];
-  saveData(); refreshColors(); updateStats(); renderPanel();
+  persist(); refreshColors(); updateStats(); renderPanel();
 }
 
 // ---------- search ----------
@@ -727,7 +834,7 @@ document.getElementById('bulkApply').onclick=()=>{
     if(!data[cName]) data[cName]=[];
     data[cName].push({name:dName, city, state, sales, note}); added++;
   });
-  saveData(); refreshColors(); updateStats();
+  persist(); refreshColors(); updateStats();
   if(selected) renderPanel();
   const rep=document.getElementById('importReport');
   rep.innerHTML=`<span class="ok">Added ${added} distributor${added!==1?'s':''}.</span>` +
@@ -735,8 +842,52 @@ document.getElementById('bulkApply').onclick=()=>{
   document.getElementById('bulkText').value='';
 };
 
+// ---------- auto-publish settings modal ----------
+const pubOverlay=document.getElementById('pubOverlay');
+function openPub(){
+  document.getElementById('pubToken').value = pub.token||'';
+  document.getElementById('pubOwner').value = pub.owner||'';
+  document.getElementById('pubRepo').value = pub.repo||'';
+  document.getElementById('pubBranch').value = pub.branch||'main';
+  document.getElementById('pubEnabled').checked = !!pub.enabled;
+  document.getElementById('pubReport').innerHTML='';
+  pubOverlay.classList.add('open');
+}
+function closePub(){ pubOverlay.classList.remove('open'); }
+document.getElementById('pubBtn').onclick=openPub;
+document.getElementById('pubCloseX').onclick=closePub;
+document.getElementById('pubCancel').onclick=closePub;
+pubOverlay.addEventListener('click', e=>{ if(e.target===pubOverlay) closePub(); });
+document.getElementById('pubSave').onclick=async()=>{
+  const rep=document.getElementById('pubReport');
+  const enabled=document.getElementById('pubEnabled').checked;
+  const token=document.getElementById('pubToken').value.trim();
+  const owner=document.getElementById('pubOwner').value.trim()||'jordangoldstein87';
+  const repo=document.getElementById('pubRepo').value.trim()||'distro-atlas';
+  const branch=document.getElementById('pubBranch').value.trim()||'main';
+  if(enabled && !token){ rep.innerHTML=`<span class="bad">Enter a token to enable auto-publish.</span>`; return; }
+  // config may have changed → invalidate cached sha
+  pub={ ...pub, enabled, token, owner, repo, branch };
+  pubSha=null; savePub();
+  if(enabled){
+    rep.innerHTML=`<span class="ok">Publishing current data…</span>`;
+    const ok=await publishNow();
+    rep.innerHTML = ok ? `<span class="ok">Connected ✓ — data.json published. Edits now auto-publish.</span>`
+                       : `<span class="bad">Couldn't publish — check the token has Contents: Read &amp; write on ${esc(owner)}/${esc(repo)}. (See status line for the error.)</span>`;
+    if(ok) setTimeout(closePub, 900);
+  } else {
+    setPubState('idle');
+    rep.innerHTML=`<span class="ok">Auto-publish turned off. Edits stay in this browser only.</span>`;
+    setTimeout(closePub, 700);
+  }
+};
+
 // esc to deselect / close
-document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ if(overlay.classList.contains('open')) closeBulk(); else if(selected) selectCountry(null); } });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape'){
+  if(pubOverlay.classList.contains('open')) closePub();
+  else if(overlay.classList.contains('open')) closeBulk();
+  else if(selected) selectCountry(null);
+} });
 
 function esc(s){ return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
@@ -762,6 +913,7 @@ window.addEventListener('resize', ()=>{ clearTimeout(rt); rt=setTimeout(()=>{
   buildMap();
   updateStats();
   renderPanel();
+  setPubState(pub.enabled ? 'idle' : 'off');
   document.getElementById('loading').style.display='none';
 })();
 </script>
