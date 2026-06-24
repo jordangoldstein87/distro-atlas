@@ -93,6 +93,7 @@
   .chip.green .n{color:var(--green-bright)}
   .chip.amber .n{color:var(--accent)}
   .chip.money .n{color:#5fd0c8}
+  .chip.leads .n{color:#c79bf2}
 
   /* ---------- body split ---------- */
   .main{display:flex;flex:1 1 auto;min-height:0}
@@ -146,6 +147,7 @@
   .tip .empty{color:var(--faint);font-size:12.5px}
   .tip .ttotal{margin-top:7px;padding-top:6px;border-top:1px solid var(--line);
     font-family:var(--mono);font-size:11.5px;color:var(--green-bright)}
+  .tip .tlead{margin-top:7px;font-family:var(--mono);font-size:11px;color:#c79bf2}
 
   /* ---------- side panel ---------- */
   .panel{flex:0 0 340px;border-left:1px solid var(--line);background:var(--panel);
@@ -156,8 +158,12 @@
     font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:6px;border:1px solid}
   .cov-badge.yes{color:var(--green-bright);border-color:#1f5a36;background:#102018}
   .cov-badge.no{color:var(--red-bright);border-color:#5a2a2d;background:#1c1012}
+  .cov-badge.lead{color:#c79bf2;border-color:#473066;background:#160f22}
 
   .panel .scroll{flex:1 1 auto;overflow:auto;padding:16px 18px}
+  .sec-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);
+    font-family:var(--mono);margin:2px 0 8px}
+  .panel-empty{color:var(--faint);font-size:13px;margin:0 0 16px}
   .distro-list{display:flex;flex-direction:column;gap:8px;margin:0 0 16px}
   .region-tally{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
     margin:0 0 16px;padding:11px 13px;background:var(--raised);border:1px solid var(--line-2);border-radius:9px}
@@ -173,15 +179,26 @@
   .distro .tag-chip.state{color:var(--accent);border-color:#4a4126;background:#171206}
   .distro .tag-chip.sales{color:var(--green-bright);border-color:#1f5a36;background:#0d1c14}
   .distro .d-note{font-size:12px;color:var(--dim);margin-top:4px;word-break:break-word}
+  .distro .d-email{display:inline-block;margin-top:4px;font-size:12px;color:#a9bdff;
+    text-decoration:none;word-break:break-all}
+  .distro .d-email:hover{text-decoration:underline}
+  .distro.lead{border-left:3px solid #7c4dd0;background:#15101f}
+  .distro.lead .d-name::after{content:"LEAD";margin-left:7px;font-family:var(--mono);font-size:8.5px;
+    letter-spacing:.1em;color:#c79bf2;border:1px solid #473066;border-radius:4px;padding:1px 4px;vertical-align:middle}
   .distro .del{flex:0 0 auto;background:none;border:none;color:var(--faint);cursor:pointer;
     font-size:15px;line-height:1;padding:2px 4px;border-radius:5px}
   .distro .del:hover{color:var(--red-bright);background:#1c1012}
 
+  .addbox{border-top:1px solid var(--line);margin-top:4px;padding-top:14px}
+  .addbox-head{font-family:var(--display);font-weight:600;font-size:14px;color:var(--text);margin:0 0 10px}
   .addform{display:flex;flex-direction:column;gap:8px}
   .addform label{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-  .addform input{background:var(--raised);border:1px solid var(--line-2);color:var(--text);
+  .addform input,.addform select{background:var(--raised);border:1px solid var(--line-2);color:var(--text);
     border-radius:8px;padding:9px 11px;font-family:var(--body);font-size:13px;outline:none;width:100%}
-  .addform input:focus{border-color:var(--green)}
+  .addform select{cursor:pointer;appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%2394a1b6' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 11px center;padding-right:28px}
+  .addform input:focus,.addform select:focus{border-color:var(--green)}
   .addform .row{display:flex;flex-direction:column;gap:4px}
   .btn{border:none;border-radius:8px;padding:9px 14px;font-family:var(--body);font-weight:600;
     font-size:13px;cursor:pointer}
@@ -258,6 +275,7 @@
     <div class="stats">
       <div class="chip green"><span class="n" id="statCovered">0</span><span class="l">Covered</span></div>
       <div class="chip amber"><span class="n" id="statDistros">0</span><span class="l">Distributors</span></div>
+      <div class="chip leads"><span class="n" id="statLeads">0</span><span class="l">Leads</span></div>
       <div class="chip money"><span class="n" id="statSales">$0</span><span class="l">Sales / mo</span></div>
     </div>
   </header>
@@ -478,7 +496,12 @@ async function loadData(){
 }
 
 // ---------- helpers ----------
-function distrosFor(name){ return data[name] || []; }
+// Each entry is a distributor or a lead (potential), distinguished by type.
+// Backward-compat: entries with no type are treated as distributors.
+function entriesFor(name){ return data[name] || []; }
+function isLead(x){ return x && x.type === 'lead'; }
+function distrosFor(name){ return entriesFor(name).filter(x=>!isLead(x)); }  // actual distributors only
+function leadsFor(name){ return entriesFor(name).filter(isLead); }
 // avg sales / month helpers
 function parseSales(v){
   if(v==null) return 0;
@@ -630,17 +653,23 @@ function refreshColors(){
 }
 
 function updateStats(){
-  let covered=0, total=0;
-  for(const k in data){ const n=data[k].length; if(n>0){covered++; total+=n;} }
+  let covered=0, total=0, leads=0;
+  for(const k in data){
+    const d=distrosFor(k).length, l=leadsFor(k).length;
+    if(d>0) covered++;
+    total+=d; leads+=l;
+  }
   document.getElementById('statCovered').textContent = covered;
   document.getElementById('statDistros').textContent = total;
   document.getElementById('statSales').textContent = fmtMoney(globalSales());
+  document.getElementById('statLeads').textContent = leads;
 }
 
 // ---------- tooltip ----------
 function onHover(e,d){
   const name = d.properties.name;
   const list = distrosFor(name);
+  const leads = leadsFor(name);
   let html = `<div class="tname">${esc(name)}</div>`;
   if(list.length){
     html += `<div class="tcov yes">${list.length} distributor${list.length>1?'s':''}</div><ul>`;
@@ -655,7 +684,12 @@ function onHover(e,d){
     const rt=regionTotal(name);
     if(rt>0) html += `<div class="ttotal">${esc(fmtMoney(rt))}/mo total</div>`;
   } else {
-    html += `<div class="tcov no">No distributor</div><div class="empty">Click to add one.</div>`;
+    html += `<div class="tcov no">No distributor</div>`;
+  }
+  if(leads.length){
+    html += `<div class="tlead">${leads.length} lead${leads.length>1?'s':''} in pipeline</div>`;
+  } else if(!list.length){
+    html += `<div class="empty">Click to add a distributor or lead.</div>`;
   }
   tip.innerHTML = html;
   tip.classList.add('show');
@@ -684,62 +718,102 @@ function renderPanel(){
       <p>Click any country on the map to see its distributors and add new ones.</p></div>`;
     return;
   }
-  const list = distrosFor(selected);
-  const covered = list.length>0;
-  let items = list.map((x,i)=>{
-    const sales = Number(x.sales)||0;
+  // keep original array indices so removal targets the right entry
+  const all = entriesFor(selected).map((x,i)=>({x,i}));
+  const dists = all.filter(o=>!isLead(o.x));
+  const leads = all.filter(o=>isLead(o.x));
+  const covered = dists.length>0;
+
+  const entryHTML = (o, lead) => {
+    const x=o.x, sales=Number(x.sales)||0;
     const tags = (x.city?`<span class="tag-chip">${esc(x.city)}</span>`:'')
                + (x.state?`<span class="tag-chip state">${esc(x.state)}</span>`:'')
-               + (sales>0?`<span class="tag-chip sales">${fmtMoney(sales)}/mo</span>`:'');
+               + (!lead && sales>0?`<span class="tag-chip sales">${fmtMoney(sales)}/mo</span>`:'');
+    const email = x.email?`<a class="d-email" href="mailto:${esc(x.email)}">✉ ${esc(x.email)}</a>`:'';
     return `
-    <div class="distro">
+    <div class="distro${lead?' lead':''}">
       <div class="d-main">
         <div class="d-name">${esc(x.name)}</div>
         ${tags?`<div class="d-tags">${tags}</div>`:''}
+        ${email}
         ${x.note?`<div class="d-note">${esc(x.note)}</div>`:''}
       </div>
-      <button class="del" data-i="${i}" title="Remove">×</button>
+      <button class="del" data-i="${o.i}" title="Remove">×</button>
     </div>`;
-  }).join('');
-  if(!list.length) items = `<p style="color:var(--faint);font-size:13px;margin:0 0 16px">No distributors here yet. Add the first one below.</p>`;
+  };
+
+  const badge = covered
+    ? `<span class="cov-badge yes">● Covered · ${dists.length}</span>`
+    : (leads.length ? `<span class="cov-badge lead">◔ Prospect · ${leads.length} lead${leads.length>1?'s':''}</span>`
+                    : `<span class="cov-badge no">○ No coverage</span>`);
+
+  const distSection = dists.length ? `
+      <div class="sec-label">Distributors · ${dists.length}</div>
+      <div class="distro-list">${dists.map(o=>entryHTML(o,false)).join('')}</div>
+      <div class="region-tally">
+        <span class="rt-label">Total avg sales / month</span>
+        <span class="rt-val">${fmtMoney(regionTotal(selected))}</span>
+      </div>` : '';
+  const leadSection = leads.length ? `
+      <div class="sec-label">Leads · ${leads.length}</div>
+      <div class="distro-list">${leads.map(o=>entryHTML(o,true)).join('')}</div>` : '';
+  const emptyMsg = (!dists.length && !leads.length)
+    ? `<p class="panel-empty">No distributors or leads here yet — add the first one below.</p>` : '';
 
   el.innerHTML = `
     <div class="head">
       <h2 class="country-name">${esc(selected)}</h2>
-      <span class="cov-badge ${covered?'yes':'no'}">${covered?'● Covered · '+list.length:'○ No coverage'}</span>
+      ${badge}
     </div>
     <div class="scroll">
-      <div class="distro-list">${items}</div>
-      ${list.length?`<div class="region-tally">
-        <span class="rt-label">Total avg sales / month · ${list.length} distributor${list.length>1?'s':''}</span>
-        <span class="rt-val">${fmtMoney(regionTotal(selected))}</span>
-      </div>`:''}
-      <div class="addform">
-        <div class="row"><label>Distributor name</label><input id="dName" type="text" placeholder="e.g. West Coast Wholesale" /></div>
-        <div class="row"><label>City</label><input id="dCity" type="text" placeholder="e.g. Los Angeles" /></div>
-        <div class="row"><label>State / Region</label><input id="dState" type="text" placeholder="e.g. CA" /></div>
-        <div class="row"><label>Avg sales / month</label><input id="dSales" type="text" inputmode="decimal" placeholder="e.g. 12000" /></div>
-        <div class="row"><label>Note (optional)</label><input id="dNote" type="text" placeholder="contact, terms…" /></div>
-        <button class="btn primary" id="addBtn">Add distributor</button>
+      ${emptyMsg}
+      ${distSection}
+      ${leadSection}
+      <div class="addbox">
+        <div class="addbox-head">+ Add to ${esc(selected)}</div>
+        <div class="addform">
+          <div class="row"><label>Type</label>
+            <select id="dType">
+              <option value="distributor">Distributor</option>
+              <option value="lead">Lead (potential)</option>
+            </select>
+          </div>
+          <div class="row"><label>Name</label><input id="dName" type="text" placeholder="e.g. West Coast Wholesale" /></div>
+          <div class="row"><label>Email (optional)</label><input id="dEmail" type="email" autocomplete="off" placeholder="contact@company.com" /></div>
+          <div class="row"><label>City</label><input id="dCity" type="text" placeholder="e.g. Los Angeles" /></div>
+          <div class="row"><label>State / Region</label><input id="dState" type="text" placeholder="e.g. CA" /></div>
+          <div class="row" id="salesRow"><label>Avg sales / month</label><input id="dSales" type="text" inputmode="decimal" placeholder="e.g. 12000" /></div>
+          <div class="row"><label>Note (optional)</label><input id="dNote" type="text" placeholder="contact, terms…" /></div>
+          <button class="btn primary" id="addBtn">Add distributor</button>
+        </div>
       </div>
     </div>`;
 
   el.querySelectorAll('.del').forEach(b=> b.addEventListener('click', ()=> removeDistro(+b.dataset.i)));
-  const nameI=el.querySelector('#dName'), cityI=el.querySelector('#dCity'),
+  const typeS=el.querySelector('#dType'), salesRow=el.querySelector('#salesRow'), addBtn=el.querySelector('#addBtn');
+  const nameI=el.querySelector('#dName'), emailI=el.querySelector('#dEmail'), cityI=el.querySelector('#dCity'),
         stateI=el.querySelector('#dState'), salesI=el.querySelector('#dSales'), noteI=el.querySelector('#dNote');
-  el.querySelector('#addBtn').addEventListener('click', addDistro);
-  [nameI,cityI,stateI,salesI,noteI].forEach(inp=> inp.addEventListener('keydown', e=>{ if(e.key==='Enter') addDistro(); }));
-  nameI.focus();
+  function syncType(){
+    const lead = typeS.value==='lead';
+    salesRow.style.display = lead ? 'none' : '';
+    addBtn.textContent = lead ? 'Add lead' : 'Add distributor';
+  }
+  typeS.addEventListener('change', syncType); syncType();
+  addBtn.addEventListener('click', addDistro);
+  [nameI,emailI,cityI,stateI,salesI,noteI].forEach(inp=> inp.addEventListener('keydown', e=>{ if(e.key==='Enter') addDistro(); }));
 }
 function addDistro(){
   const nameI=document.getElementById('dName'); if(!nameI) return;
   const name=nameI.value.trim(); if(!name) return;
+  const type=document.getElementById('dType').value==='lead'?'lead':'distributor';
+  const email=document.getElementById('dEmail').value.trim();
   const city=document.getElementById('dCity').value.trim();
   const state=document.getElementById('dState').value.trim();
-  const sales=parseSales(document.getElementById('dSales').value);
   const note=document.getElementById('dNote').value.trim();
   if(!data[selected]) data[selected]=[];
-  data[selected].push({name, city, state, sales, note});
+  const entry={type, name, email, city, state, note};
+  if(type!=='lead') entry.sales=parseSales(document.getElementById('dSales').value);
+  data[selected].push(entry);
   persist(); refreshColors(); updateStats(); renderPanel();
 }
 function removeDistro(i){
@@ -790,8 +864,8 @@ document.getElementById('zreset').onclick=()=> svg.transition().duration(400).ca
 
 // ---------- export / bulk ----------
 document.getElementById('exportBtn').onclick=()=>{
-  const rows=[['Country','Distributor','City','State','Avg Sales/Month','Note']];
-  Object.keys(data).sort().forEach(c=> data[c].forEach(d=> rows.push([c,d.name,d.city||'',d.state||'',(Number(d.sales)||0)||'',d.note||''])));
+  const rows=[['Country','Type','Name','City','State','Email','Avg Sales/Month','Note']];
+  Object.keys(data).sort().forEach(c=> data[c].forEach(d=> rows.push([c, isLead(d)?'Lead':'Distributor', d.name, d.city||'', d.state||'', d.email||'', isLead(d)?'':((Number(d.sales)||0)||''), d.note||''])));
   const csv=rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob=new Blob([csv],{type:'text/csv'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
@@ -832,7 +906,7 @@ document.getElementById('bulkApply').onclick=()=>{
     if(!cName){ unmatched.push(parts[0]); return; }
     if(!dName) return;
     if(!data[cName]) data[cName]=[];
-    data[cName].push({name:dName, city, state, sales, note}); added++;
+    data[cName].push({type:'distributor', name:dName, city, state, sales, note}); added++;
   });
   persist(); refreshColors(); updateStats();
   if(selected) renderPanel();

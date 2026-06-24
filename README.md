@@ -6,20 +6,30 @@ An interactive world map of distributor coverage. Green = has a distributor, red
 - `index.html` — the app (fully self-contained, no build step)
 - `data.json` — the shared, team-wide dataset everyone sees on load
 
-## Distributor fields
-Each distributor has a name plus four optional fields:
+## Distributors and leads
+Every country can hold two kinds of entries, chosen from the **Type** dropdown in the
+add form (which sits at the bottom of the panel, so the current list stays clean at the top):
+
+- **Distributor** — an active distributor. Counts toward green map coverage and the sales totals.
+- **Lead (potential)** — a prospect/contact you're working. Does **not** turn the country green;
+  it shows under a separate "Leads" section, a purple `LEAD` tag, and a "Prospect" badge, and is
+  counted in the header **Leads** chip and the tooltip's "N leads in pipeline" line.
+
+Each entry has a name plus these optional fields:
 
 | Field | Required | Notes |
 | ----- | -------- | ----- |
-| Distributor name | yes | shown in the panel, tooltip, and CSV |
+| Name | yes | shown in the panel, tooltip, and CSV |
+| Email | no | contact address; shown as a `✉` mailto link and in CSV |
 | City | no | shown as a tag chip next to the name and in the tooltip |
 | State / Region | no | shown as a tag chip and in the tooltip |
-| Avg sales / month | no | number; shown as a green `$/mo` chip and summed per country |
+| Avg sales / month | no | distributors only; number, shown as a green `$/mo` chip and summed per country |
 | Note | no | free text (contact, terms…), shown under the name |
 
-The on-disk shape is `{ "<country name>": [ { "name", "city", "state", "sales", "note" }, … ] }`,
-where `sales` is the average monthly sales as a plain number. Older entries that only have
-`{ "name", "note" }` (or no `sales`) still load fine — missing fields are treated as blank/0,
+The on-disk shape is `{ "<country name>": [ { "type", "name", "email", "city", "state", "sales", "note" }, … ] }`,
+where `type` is `"distributor"` or `"lead"` and `sales` is a plain number. Older entries with no
+`type` are treated as distributors, and entries that only have `{ "name", "note" }` (or no `sales`/`email`)
+still load fine — missing fields are treated as blank/0,
 so existing `data.json` files keep working.
 
 ## Sales totals
@@ -50,8 +60,8 @@ USA, West Coast Wholesale, Los Angeles, CA, 12000, net-30 terms
 ```
 
 ## CSV export
-**Export CSV** writes one row per distributor with columns:
-`Country, Distributor, City, State, Avg Sales/Month, Note`.
+**Export CSV** writes one row per entry (distributors and leads) with columns:
+`Country, Type, Name, City, State, Email, Avg Sales/Month, Note`.
 
 ## Host it on GitHub Pages
 1. Create a new repository (e.g. `distro-atlas`).
