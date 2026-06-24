@@ -50,5 +50,14 @@
       "sales": 25000,
       "note": ""
     }
+  ],
+  "Australia": [
+    {
+      "name": "MoodState",
+      "city": "",
+      "state": "",
+      "sales": 10000,
+      "note": ""
+    }
   ]
 }
