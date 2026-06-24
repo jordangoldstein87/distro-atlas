@@ -1,1 +1,54 @@
-{}
+{
+  "Canada": [
+    {
+      "name": "West Coast Gifts",
+      "city": "Vancouver",
+      "state": "",
+      "sales": 25000,
+      "note": ""
+    },
+    {
+      "name": "Smoke Arsenal",
+      "city": "Toronto",
+      "state": "",
+      "sales": 15000,
+      "note": ""
+    }
+  ],
+  "Argentina": [
+    {
+      "name": "Tiger Time",
+      "city": "",
+      "state": "",
+      "sales": 15000,
+      "note": ""
+    }
+  ],
+  "Germany": [
+    {
+      "name": "Reinhart",
+      "city": "",
+      "state": "",
+      "sales": 10000,
+      "note": ""
+    }
+  ],
+  "Netherlands": [
+    {
+      "name": "Novi Wholesale",
+      "city": "",
+      "state": "",
+      "sales": 0,
+      "note": ""
+    }
+  ],
+  "United Kingdom": [
+    {
+      "name": "Retail North",
+      "city": "",
+      "state": "",
+      "sales": 25000,
+      "note": ""
+    }
+  ]
+}
