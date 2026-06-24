@@ -59,5 +59,14 @@
       "sales": 10000,
       "note": ""
     }
+  ],
+  "Ireland": [
+    {
+      "name": "Retail North",
+      "city": "",
+      "state": "",
+      "sales": 0,
+      "note": ""
+    }
   ]
 }
