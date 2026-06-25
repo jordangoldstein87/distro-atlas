@@ -6,6 +6,15 @@
       "state": "",
       "sales": 15000,
       "note": ""
+    },
+    {
+      "type": "distributor",
+      "name": "West Coast Gifts",
+      "email": "",
+      "city": "",
+      "state": "",
+      "note": "",
+      "sales": 12500
     }
   ],
   "Argentina": [
