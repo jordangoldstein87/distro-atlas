@@ -136,5 +136,16 @@
       "state": "",
       "note": "$10000"
     }
+  ],
+  "New Zealand": [
+    {
+      "type": "distributor",
+      "name": "Vireo Health",
+      "email": "",
+      "city": "",
+      "state": "",
+      "note": "",
+      "sales": 1000
+    }
   ]
 }
