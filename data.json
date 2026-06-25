@@ -101,5 +101,16 @@
       "note": "",
       "sales": 4000
     }
+  ],
+  "Colombia": [
+    {
+      "type": "distributor",
+      "name": "Vaporizadores BA - Colombia",
+      "email": "",
+      "city": "",
+      "state": "",
+      "note": "",
+      "sales": 1200
+    }
   ]
 }
