@@ -28,6 +28,38 @@
       "state": "",
       "note": "",
       "sales": 10000
+    },
+    {
+      "type": "lead",
+      "name": "Distribuidora Pop",
+      "email": "",
+      "city": "Vicente López",
+      "state": "Buenos Aires",
+      "note": "Wholesale parafernalia/growshop supplies — papers, filters, grinders, bongs, pipes (source: distribuidorapop.com.ar)"
+    },
+    {
+      "type": "lead",
+      "name": "Santa Planta",
+      "email": "ventas@santaplanta.com.ar",
+      "city": "Buenos Aires",
+      "state": "CABA",
+      "note": "Growshop & parafernalia distributor — rolling papers, bongs, vaporizers (source: santaplanta.com.ar)"
+    },
+    {
+      "type": "lead",
+      "name": "Parafernalia.ar",
+      "email": "",
+      "city": "Vicente López",
+      "state": "Buenos Aires",
+      "note": "Wholesale parafernalia for growshops & tabaquerías — grinders, bongs, glass pipes, OCB/Gizeh papers (source: parafernalia.ar)"
+    },
+    {
+      "type": "lead",
+      "name": "Parainfernalia",
+      "email": "",
+      "city": "",
+      "state": "",
+      "note": "Nationwide wholesale distributor — tobacco, papers, filters, blunts, grinders, bongs, pipes, grow supplies (source: parainfernalia.com.ar)"
     }
   ],
   "Germany": [
@@ -95,6 +127,30 @@
       "state": "",
       "note": "",
       "sales": 8000
+    },
+    {
+      "type": "lead",
+      "name": "One Atacadista",
+      "email": "suporte@onetabacaria.com.br",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "note": "Wholesale-only headshop/tobacco distributor — rolling papers, blunts, grinders, bongs, 3000+ products (source: oneatacadista.com.br)"
+    },
+    {
+      "type": "lead",
+      "name": "Vila Paiol",
+      "email": "adm@vilapaiol.com.br",
+      "city": "Divino Espírito Santo",
+      "state": "Espírito Santo",
+      "note": "Official Brazil distributor of Smoking rolling papers + filters & tobacco accessories, wholesale (source: vilapaiol.com.br/atacado/smoking)"
+    },
+    {
+      "type": "lead",
+      "name": "Madrugashop",
+      "email": "sac@madrugashop.com",
+      "city": "São Paulo",
+      "state": "SP",
+      "note": "Tobacco shop/headshop — papers, bongs, grinders, pipes, lighters; ships nationwide (source: madrugashop.com)"
     }
   ],
   "Switzerland": [
@@ -125,6 +181,30 @@
       "city": "",
       "state": "",
       "note": ""
+    },
+    {
+      "type": "lead",
+      "name": "Paradise Smoking Shop",
+      "email": "info@paradisesmokingshop.com",
+      "city": "Cali",
+      "state": "",
+      "note": "Distributor of rolling papers (all brands), bongs, pipes, glass, grinders & growshop supplies; wholesale + retail (source: paradisesmokingshop.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Xmoks",
+      "email": "",
+      "city": "Bogotá",
+      "state": "",
+      "note": "Online smoke shop w/ wholesale pricing — OCB/RAW/Lion papers, blunts, cones, accessories (source: xmoks.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Bloommart",
+      "email": "support@bloommart.co",
+      "city": "Bogotá",
+      "state": "",
+      "note": "Online smoke shop — papers, filters, grinders, bongs, bubblers, vaporizers, tobacco, grow gear (source: bloommart.co)"
     }
   ],
   "Chile": [
@@ -135,6 +215,30 @@
       "city": "",
       "state": "",
       "note": "$10000"
+    },
+    {
+      "type": "lead",
+      "name": "Enrolando.cl",
+      "email": "enrolando@vishvindia.cl",
+      "city": "Santiago",
+      "state": "",
+      "note": "Online tabaquería & wholesale/retail distributor (Importadora Vishv India) — tobacco, papers, filters, bongs, vaporizers (source: enrolando.cl)"
+    },
+    {
+      "type": "lead",
+      "name": "Delaferia Growshop",
+      "email": "tienda@delaferia.cl",
+      "city": "",
+      "state": "",
+      "note": "Growshop chain — pipes, glass/silicone bongs, grinders, papers, vaporizers (source: delaferia.cl)"
+    },
+    {
+      "type": "lead",
+      "name": "Fumetas Store",
+      "email": "",
+      "city": "Providencia",
+      "state": "Santiago",
+      "note": "Smokeshop & growshop — papers, filters, grinders, bongs, pipes, vaporizers; ships nationwide (source: fumetas.cl)"
     }
   ],
   "New Zealand": [
@@ -146,6 +250,272 @@
       "state": "",
       "note": "",
       "sales": 1000
+    }
+  ],
+  "Peru": [
+    {
+      "type": "lead",
+      "name": "Green Weed",
+      "email": "ventas@greenweed.pe",
+      "city": "Lima",
+      "state": "",
+      "note": "Lima growshop & smoke shop — vaporizers, bongs, pipes, cultivation supplies; national shipping (source: greenweed.pe)"
+    },
+    {
+      "type": "lead",
+      "name": "Apegos",
+      "email": "contacto@apegos.com.pe",
+      "city": "Lima",
+      "state": "",
+      "note": "Lima smoke shop — bongs, water pipes, vaporizers, grinders, rolling papers, grow supplies (source: apegos.com.pe/smoke)"
+    },
+    {
+      "type": "lead",
+      "name": "SmokeShop Perú",
+      "email": "",
+      "city": "Lima",
+      "state": "",
+      "note": "Lima smoke shop — pipes, bongs, bubblers, hookahs, papers, grinders, vaporizers; national shipping (source: smokeshopperu.com)"
+    }
+  ],
+  "Uruguay": [
+    {
+      "type": "lead",
+      "name": "Indajaus Grow Shop",
+      "email": "ventas@indajaus.com.uy",
+      "city": "Montevideo",
+      "state": "",
+      "note": "Montevideo growshop — bongs, pipes, grinders, papers, filters, cultivation supplies (source: indajaus.com.uy)"
+    },
+    {
+      "type": "lead",
+      "name": "Urugrow Grow Shop",
+      "email": "",
+      "city": "Montevideo",
+      "state": "",
+      "note": "Montevideo growshop — nutrients, indoor gear & accessories for growers, cannabis clubs, retailers (source: urugrow.com.uy)"
+    }
+  ],
+  "Paraguay": [
+    {
+      "type": "lead",
+      "name": "Asunzion420",
+      "email": "asunzion420@gmail.com",
+      "city": "Asunción",
+      "state": "",
+      "note": "Paraguay's first growshop (since 2016) — bongs, pipes, grinders, vaporizers, lighters, cultivation supplies (source: asunzion.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Tienda Casper",
+      "email": "",
+      "city": "Ciudad del Este",
+      "state": "",
+      "note": "Head shop — bongs, pipes, kits, hookahs, vapes, grinders, tobacco products (source: tiendacasper.com.py)"
+    }
+  ],
+  "Ecuador": [
+    {
+      "type": "lead",
+      "name": "Smoke Lab Ecuador",
+      "email": "",
+      "city": "Guayaquil",
+      "state": "",
+      "note": "Smoke shop — bongs, pipes, papers, grinders, vaporizers; ships across Ecuador (source: smokelabec.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Smoke Zone Ecuador",
+      "email": "",
+      "city": "Loja",
+      "state": "",
+      "note": "Smoke shop/growshop w/ store in Loja — vaporizers, bongs, pipes, papers, blunts, grinders; national shipping (source: smokezoneec.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Trebol Grow Smoke Shop",
+      "email": "",
+      "city": "",
+      "state": "",
+      "note": "Active grow/smoke shop (since 2019, 46K followers) — cultivation gear & smoking accessories (source: instagram.com/trebolgrowshop)"
+    }
+  ],
+  "Bolivia": [
+    {
+      "type": "lead",
+      "name": "Smoke Shop Bolivia",
+      "email": "",
+      "city": "Cochabamba",
+      "state": "",
+      "note": "First online tobacco-accessory shop in Bolivia — RAW/OCB/Smoking papers, filters, pipes, grinders, bongs, lighters (source: smokeshop.com.bo)"
+    },
+    {
+      "type": "lead",
+      "name": "Green House Bolivia",
+      "email": "",
+      "city": "Cochabamba",
+      "state": "",
+      "note": "Online smoking-articles store — papers/blunts/wraps, bongs, glass/silicone/metal pipes, grinders; national shipping (source: greenhousebolivia.store)"
+    },
+    {
+      "type": "lead",
+      "name": "Proganja GrowShop",
+      "email": "",
+      "city": "",
+      "state": "",
+      "note": "Bolivian growshop — cultivation supplies & smoking accessories (source: instagram.com/proganjagrowshop)"
+    }
+  ],
+  "Venezuela": [
+    {
+      "type": "lead",
+      "name": "Smokerolla Venezuela",
+      "email": "",
+      "city": "Caracas",
+      "state": "",
+      "note": "Caracas smoke shop (since 2009) — blunt papers, bongs, vaporizers; pickup & delivery (source: smokerolla.com)"
+    },
+    {
+      "type": "lead",
+      "name": "San Luis Cigars",
+      "email": "",
+      "city": "Caracas",
+      "state": "",
+      "note": "Venezuela distributor of premium cigars & high-end smoking accessories; lounges in Caracas & Valencia (source: sanluiscigars.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Cigars Venezuela (Kukenan Tobacco Trading)",
+      "email": "",
+      "city": "Caracas",
+      "state": "",
+      "note": "Official Habanos S.A. distributor for Venezuela — premium cigars & accessories (source: cigarsvenezuela.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Bocanadas Cigar Store",
+      "email": "",
+      "city": "Caracas",
+      "state": "",
+      "note": "Caracas cigar/tobacco store (San Ignacio & CCCT) — tobacco, accessories, national shipping (source: instagram.com/bocanadascigarstore)"
+    }
+  ],
+  "Morocco": [
+    {
+      "type": "lead",
+      "name": "Smoke Shop Depot",
+      "email": "contact@smokeshopdepot.com",
+      "city": "Casablanca",
+      "state": "",
+      "note": "Self-described #1 Morocco wholesaler of smoking accessories, disposables, chicha/hookah, charcoal, snus, e-liquids; nationwide delivery (source: smokeshopdepot.ma)"
+    },
+    {
+      "type": "lead",
+      "name": "The Amsterdam",
+      "email": "contact@theamsterdam.net",
+      "city": "Casablanca",
+      "state": "",
+      "note": "Premium smoke & vape shop chain — papers, filters, pipes, bongs, grinders, hookahs, charcoal, vape gear (source: theamsterdam.net)"
+    },
+    {
+      "type": "lead",
+      "name": "Brooklyn Smoke Shop & Vape",
+      "email": "contact@brooklynsmokeshop.ma",
+      "city": "Casablanca",
+      "state": "",
+      "note": "Head shop, 3 Casablanca locations — papers, cones, blunt wraps, bongs, pipes, dab rigs, grinders, hookah, vape (source: brooklynsmokeshop.ma)"
+    },
+    {
+      "type": "lead",
+      "name": "Good Vapes",
+      "email": "",
+      "city": "Casablanca",
+      "state": "",
+      "note": "Casablanca vape shop — e-cigs, e-liquids, pods, mods, accessories; delivery throughout Morocco (source: good-vapes.ma)"
+    },
+    {
+      "type": "lead",
+      "name": "Vape Lab Morocco",
+      "email": "",
+      "city": "Marrakech",
+      "state": "",
+      "note": "Marrakech vape shop — e-cigarettes, e-liquids, vaping accessories; delivery across Morocco (source: facebook.com/vapelab.ma)"
+    }
+  ],
+  "South Africa": [
+    {
+      "type": "lead",
+      "name": "Wicked Imports (Pty) Ltd",
+      "email": "",
+      "city": "",
+      "state": "",
+      "note": "Wholesale importer/distributor (est. 2003) — tobaccos, cigars, molasses, hubbly bubblies, rolling papers, lighters, vaporizers, bongs to SA trade (source: wickedimports.co.za)"
+    },
+    {
+      "type": "lead",
+      "name": "Little Amsterdam Headshop",
+      "email": "littleamsterdamheadshop@gmail.com",
+      "city": "Cape Town",
+      "state": "",
+      "note": "Cape Town head shop (est. 2003, Long St) — bongs, percolators, glass pipes, vaporizers, grinders, dab rigs; wholesale welcome (source: littleamsterdamheadshop.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Puff.co.za",
+      "email": "new@puff.co.za",
+      "city": "Cape Town",
+      "state": "",
+      "note": "Online head shop since 2010, ships nationally — bongs, dabbing gear, grinders, pre-rolls, accessories (source: puff.co.za)"
+    },
+    {
+      "type": "lead",
+      "name": "420.co.za",
+      "email": "info@420.co.za",
+      "city": "",
+      "state": "",
+      "note": "Online smoke shop — glass bongs, water pipes, dab rigs, pipes, papers, grinders, dry-herb vaporizers (source: 420.co.za)"
+    }
+  ],
+  "Nigeria": [
+    {
+      "type": "lead",
+      "name": "Vamp",
+      "email": "",
+      "city": "Lagos",
+      "state": "",
+      "note": "Self-described Nigeria's most trusted smoke shop — bongs, dab rigs, pipes, chillums, bubblers, grinders, papers, shisha, vapes; 100+ brands (source: vamp.ng)"
+    },
+    {
+      "type": "lead",
+      "name": "Reyvape",
+      "email": "",
+      "city": "Lagos",
+      "state": "",
+      "note": "Online vape & smoke shop — vaporizers, dry herb vapes, pods, e-liquids, HEETS, hookah/shisha; delivery in PH/Lagos/Abuja (source: reyvape.com)"
+    },
+    {
+      "type": "lead",
+      "name": "420CultureNG",
+      "email": "deewtins@gmail.com",
+      "city": "Lagos",
+      "state": "",
+      "note": "Smoke/vape retailer, stores in Lekki (Lagos) & Wuse (Abuja) — e-cigs, pod vapes, mods, disposables, e-liquid, accessories (source: 420cultureng.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Cloud Kings NG",
+      "email": "info@cloudkingsng.com",
+      "city": "Abuja",
+      "state": "",
+      "note": "Premium smoke shop, multiple Abuja branches — vape devices, kits, e-liquids, dry herb vaporizers, mods, tanks, accessories (source: cloudkings.ng)"
+    },
+    {
+      "type": "lead",
+      "name": "Vapology",
+      "email": "",
+      "city": "Lagos",
+      "state": "",
+      "note": "Ikeja vape shop — vape kits, pod systems, e-liquids, nic salts, disposables, dry herb vaporizers, accessories (source: vapology.com.ng)"
     }
   ]
 }
