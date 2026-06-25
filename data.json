@@ -92,15 +92,6 @@
       "city": "",
       "state": "",
       "note": "",
-      "sales": 10000
-    },
-    {
-      "type": "distributor",
-      "name": "Elite Smoke",
-      "email": "",
-      "city": "",
-      "state": "",
-      "note": "",
       "sales": 8000
     }
   ],
