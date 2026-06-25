@@ -26,6 +26,15 @@
       "state": "",
       "sales": 15000,
       "note": ""
+    },
+    {
+      "type": "distributor",
+      "name": "Tiger Time",
+      "email": "",
+      "city": "",
+      "state": "",
+      "note": "",
+      "sales": 10000
     }
   ],
   "Germany": [
