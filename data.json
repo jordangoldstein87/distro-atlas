@@ -118,5 +118,15 @@
       "note": "",
       "sales": 1200
     }
+  ],
+  "Chile": [
+    {
+      "type": "lead",
+      "name": "MOBIMO Chile",
+      "email": "Joaquin",
+      "city": "",
+      "state": "",
+      "note": "$10000"
+    }
   ]
 }
