@@ -8,6 +8,15 @@
       "state": "",
       "note": "",
       "sales": 12500
+    },
+    {
+      "type": "distributor",
+      "name": "Smoke Arsenal",
+      "email": "",
+      "city": "",
+      "state": "",
+      "note": "",
+      "sales": 12500
     }
   ],
   "Argentina": [
