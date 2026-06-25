@@ -1041,5 +1041,52 @@
       "state": "",
       "note": "Windhoek vape retailer (Southern Industrial) — vaping devices, e-liquids, accessories (source: stylevapes.com)"
     }
+  ],
+  "Iceland": [
+    {
+      "type": "lead",
+      "name": "Reykjavík Headshop",
+      "email": "info@reykjavikheadshop.is",
+      "whatsapp": "+3547929333",
+      "city": "Reykjavík",
+      "state": "",
+      "note": "Head shop — bongs/water pipes, rolling papers & cones, grinders, vaporizers (PAX, Puffco, Storz & Bickel), hemp products (source: rvkheadshop.is)"
+    },
+    {
+      "type": "lead",
+      "name": "Nirvana Iceland Head Shop",
+      "email": "IcelandHeadShop@gmail.com",
+      "whatsapp": "+3547723423",
+      "city": "Reykjavík",
+      "state": "",
+      "note": "Reykjavík head shop (Suðurlandsbraut 6) — smoking accessories and head-shop goods (source: yelu.is/company/1277/Nirvana_Iceland_Head_Shop)"
+    },
+    {
+      "type": "lead",
+      "name": "GS Búllan",
+      "email": "",
+      "whatsapp": "+3548533002",
+      "city": "Reykjavík",
+      "state": "",
+      "note": "Vape & smoke retailer (Reykjavík + Akureyri) — vapes, nicotine pouches, e-liquids, CBD products (source: gsbullan.is)"
+    },
+    {
+      "type": "lead",
+      "name": "Rafrettur.is",
+      "email": "",
+      "whatsapp": "",
+      "city": "Reykjavík",
+      "state": "",
+      "note": "Online vape retailer — e-cigarettes, disposables, nicotine pouches, e-liquids, rolling papers & accessories; nationwide shipping (source: rafrettur.is)"
+    },
+    {
+      "type": "lead",
+      "name": "PuffVapeShop",
+      "email": "",
+      "whatsapp": "",
+      "city": "Reykjavík",
+      "state": "",
+      "note": "Reykjavík vape shop — vaping products with delivery, shipping and pickup (source: puffvapeshop.is)"
+    }
   ]
 }
