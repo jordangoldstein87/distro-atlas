@@ -90,5 +90,16 @@
       "note": "",
       "sales": 10000
     }
+  ],
+  "Switzerland": [
+    {
+      "type": "distributor",
+      "name": "FourTwenty",
+      "email": "",
+      "city": "",
+      "state": "",
+      "note": "",
+      "sales": 4000
+    }
   ]
 }
