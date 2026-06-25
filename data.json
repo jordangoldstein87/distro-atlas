@@ -1,13 +1,6 @@
 {
   "Canada": [
     {
-      "name": "Smoke Arsenal",
-      "city": "Toronto",
-      "state": "",
-      "sales": 15000,
-      "note": ""
-    },
-    {
       "type": "distributor",
       "name": "West Coast Gifts",
       "email": "",
