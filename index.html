@@ -179,9 +179,10 @@
   .distro .tag-chip.state{color:var(--accent);border-color:#4a4126;background:#171206}
   .distro .tag-chip.sales{color:var(--green-bright);border-color:#1f5a36;background:#0d1c14}
   .distro .d-note{font-size:12px;color:var(--dim);margin-top:4px;word-break:break-word}
-  .distro .d-email{display:inline-block;margin-top:4px;font-size:12px;color:#a9bdff;
-    text-decoration:none;word-break:break-all}
-  .distro .d-email:hover{text-decoration:underline}
+  .distro .d-contacts{display:flex;flex-direction:column;gap:2px;margin-top:4px}
+  .distro .d-email{font-size:12px;color:#a9bdff;text-decoration:none;word-break:break-all}
+  .distro .d-wa{font-size:12px;color:var(--green-bright);text-decoration:none;word-break:break-all}
+  .distro .d-email:hover,.distro .d-wa:hover{text-decoration:underline}
   .distro.lead{border-left:3px solid #7c4dd0;background:#15101f}
   .distro.lead .d-name::after{content:"LEAD";margin-left:7px;font-family:var(--mono);font-size:8.5px;
     letter-spacing:.1em;color:#c79bf2;border:1px solid #473066;border-radius:4px;padding:1px 4px;vertical-align:middle}
@@ -730,12 +731,14 @@ function renderPanel(){
                + (x.state?`<span class="tag-chip state">${esc(x.state)}</span>`:'')
                + (!lead && sales>0?`<span class="tag-chip sales">${fmtMoney(sales)}/mo</span>`:'');
     const email = x.email?`<a class="d-email" href="mailto:${esc(x.email)}">✉ ${esc(x.email)}</a>`:'';
+    const wa = x.whatsapp?`<a class="d-wa" href="https://wa.me/${esc(String(x.whatsapp).replace(/[^0-9]/g,''))}" target="_blank" rel="noopener">✆ ${esc(x.whatsapp)}</a>`:'';
+    const contacts = (email||wa)?`<div class="d-contacts">${email}${wa}</div>`:'';
     return `
     <div class="distro${lead?' lead':''}">
       <div class="d-main">
         <div class="d-name">${esc(x.name)}</div>
         ${tags?`<div class="d-tags">${tags}</div>`:''}
-        ${email}
+        ${contacts}
         ${x.note?`<div class="d-note">${esc(x.note)}</div>`:''}
       </div>
       <button class="del" data-i="${o.i}" title="Remove">×</button>
@@ -780,6 +783,7 @@ function renderPanel(){
           </div>
           <div class="row"><label>Name</label><input id="dName" type="text" placeholder="e.g. West Coast Wholesale" /></div>
           <div class="row"><label>Email (optional)</label><input id="dEmail" type="email" autocomplete="off" placeholder="contact@company.com" /></div>
+          <div class="row"><label>WhatsApp (optional)</label><input id="dWa" type="text" autocomplete="off" placeholder="+1 555 123 4567" /></div>
           <div class="row"><label>City</label><input id="dCity" type="text" placeholder="e.g. Los Angeles" /></div>
           <div class="row"><label>State / Region</label><input id="dState" type="text" placeholder="e.g. CA" /></div>
           <div class="row" id="salesRow"><label>Avg sales / month</label><input id="dSales" type="text" inputmode="decimal" placeholder="e.g. 12000" /></div>
@@ -791,8 +795,8 @@ function renderPanel(){
 
   el.querySelectorAll('.del').forEach(b=> b.addEventListener('click', ()=> removeDistro(+b.dataset.i)));
   const typeS=el.querySelector('#dType'), salesRow=el.querySelector('#salesRow'), addBtn=el.querySelector('#addBtn');
-  const nameI=el.querySelector('#dName'), emailI=el.querySelector('#dEmail'), cityI=el.querySelector('#dCity'),
-        stateI=el.querySelector('#dState'), salesI=el.querySelector('#dSales'), noteI=el.querySelector('#dNote');
+  const nameI=el.querySelector('#dName'), emailI=el.querySelector('#dEmail'), waI=el.querySelector('#dWa'),
+        cityI=el.querySelector('#dCity'), stateI=el.querySelector('#dState'), salesI=el.querySelector('#dSales'), noteI=el.querySelector('#dNote');
   function syncType(){
     const lead = typeS.value==='lead';
     salesRow.style.display = lead ? 'none' : '';
@@ -800,18 +804,19 @@ function renderPanel(){
   }
   typeS.addEventListener('change', syncType); syncType();
   addBtn.addEventListener('click', addDistro);
-  [nameI,emailI,cityI,stateI,salesI,noteI].forEach(inp=> inp.addEventListener('keydown', e=>{ if(e.key==='Enter') addDistro(); }));
+  [nameI,emailI,waI,cityI,stateI,salesI,noteI].forEach(inp=> inp.addEventListener('keydown', e=>{ if(e.key==='Enter') addDistro(); }));
 }
 function addDistro(){
   const nameI=document.getElementById('dName'); if(!nameI) return;
   const name=nameI.value.trim(); if(!name) return;
   const type=document.getElementById('dType').value==='lead'?'lead':'distributor';
   const email=document.getElementById('dEmail').value.trim();
+  const whatsapp=document.getElementById('dWa').value.trim();
   const city=document.getElementById('dCity').value.trim();
   const state=document.getElementById('dState').value.trim();
   const note=document.getElementById('dNote').value.trim();
   if(!data[selected]) data[selected]=[];
-  const entry={type, name, email, city, state, note};
+  const entry={type, name, email, whatsapp, city, state, note};
   if(type!=='lead') entry.sales=parseSales(document.getElementById('dSales').value);
   data[selected].push(entry);
   persist(); refreshColors(); updateStats(); renderPanel();
@@ -864,8 +869,8 @@ document.getElementById('zreset').onclick=()=> svg.transition().duration(400).ca
 
 // ---------- export / bulk ----------
 document.getElementById('exportBtn').onclick=()=>{
-  const rows=[['Country','Type','Name','City','State','Email','Avg Sales/Month','Note']];
-  Object.keys(data).sort().forEach(c=> data[c].forEach(d=> rows.push([c, isLead(d)?'Lead':'Distributor', d.name, d.city||'', d.state||'', d.email||'', isLead(d)?'':((Number(d.sales)||0)||''), d.note||''])));
+  const rows=[['Country','Type','Name','City','State','Email','WhatsApp','Avg Sales/Month','Note']];
+  Object.keys(data).sort().forEach(c=> data[c].forEach(d=> rows.push([c, isLead(d)?'Lead':'Distributor', d.name, d.city||'', d.state||'', d.email||'', d.whatsapp||'', isLead(d)?'':((Number(d.sales)||0)||''), d.note||''])));
   const csv=rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob=new Blob([csv],{type:'text/csv'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);

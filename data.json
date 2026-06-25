@@ -35,7 +35,8 @@
       "email": "",
       "city": "Vicente López",
       "state": "Buenos Aires",
-      "note": "Wholesale parafernalia/growshop supplies — papers, filters, grinders, bongs, pipes (source: distribuidorapop.com.ar)"
+      "note": "Wholesale parafernalia/growshop supplies — papers, filters, grinders, bongs, pipes (source: distribuidorapop.com.ar)",
+      "whatsapp": "+541139528296"
     },
     {
       "type": "lead",
@@ -48,7 +49,7 @@
     {
       "type": "lead",
       "name": "Parafernalia.ar",
-      "email": "",
+      "email": "hola@parafernalia.ar",
       "city": "Vicente López",
       "state": "Buenos Aires",
       "note": "Wholesale parafernalia for growshops & tabaquerías — grinders, bongs, glass pipes, OCB/Gizeh papers (source: parafernalia.ar)"
@@ -56,10 +57,11 @@
     {
       "type": "lead",
       "name": "Parainfernalia",
-      "email": "",
+      "email": "hola@parainfernalia.com.ar",
       "city": "",
       "state": "",
-      "note": "Nationwide wholesale distributor — tobacco, papers, filters, blunts, grinders, bongs, pipes, grow supplies (source: parainfernalia.com.ar)"
+      "note": "Nationwide wholesale distributor — tobacco, papers, filters, blunts, grinders, bongs, pipes, grow supplies (source: parainfernalia.com.ar)",
+      "whatsapp": "+541122627551"
     }
   ],
   "Germany": [
@@ -196,7 +198,8 @@
       "email": "",
       "city": "Bogotá",
       "state": "",
-      "note": "Online smoke shop w/ wholesale pricing — OCB/RAW/Lion papers, blunts, cones, accessories (source: xmoks.com)"
+      "note": "Online smoke shop w/ wholesale pricing — OCB/RAW/Lion papers, blunts, cones, accessories (source: xmoks.com)",
+      "whatsapp": "+573153153451"
     },
     {
       "type": "lead",
@@ -238,7 +241,8 @@
       "email": "",
       "city": "Providencia",
       "state": "Santiago",
-      "note": "Smokeshop & growshop — papers, filters, grinders, bongs, pipes, vaporizers; ships nationwide (source: fumetas.cl)"
+      "note": "Smokeshop & growshop — papers, filters, grinders, bongs, pipes, vaporizers; ships nationwide (source: fumetas.cl)",
+      "whatsapp": "+56939311563"
     }
   ],
   "New Zealand": [
@@ -293,7 +297,44 @@
       "email": "",
       "city": "Montevideo",
       "state": "",
-      "note": "Montevideo growshop — nutrients, indoor gear & accessories for growers, cannabis clubs, retailers (source: urugrow.com.uy)"
+      "note": "Montevideo growshop — nutrients, indoor gear & accessories for growers, cannabis clubs, retailers (source: urugrow.com.uy)",
+      "whatsapp": "+59891024420"
+    },
+    {
+      "type": "lead",
+      "name": "Media Grow",
+      "email": "",
+      "whatsapp": "+59898337278",
+      "city": "Montevideo",
+      "state": "",
+      "note": "Grow & smoke shop (since 2013, Montevideo + Punta del Este) — RAW/OCB/Clipper papers, bongs, pipes, cultivation gear (source: mediagrow.com.uy)"
+    },
+    {
+      "type": "lead",
+      "name": "Grow Shop del Paso",
+      "email": "ofertasdelpaso@gmail.com",
+      "whatsapp": "+59893579158",
+      "city": "Montevideo",
+      "state": "",
+      "note": "Grow/smoke shop (Av. Agraciada 4141) — papers, bongs, pipes, grinders, vaporizers, cultivation supplies (source: growshopdelpaso.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Tu Cultivo",
+      "email": "info@tucultivo.com.uy",
+      "whatsapp": "+59892489706",
+      "city": "Montevideo",
+      "state": "",
+      "note": "Pocitos grow shop (7+ yrs) — bongs, papers, filters, vaporizers plus cultivation gear (source: tucultivo.com.uy)"
+    },
+    {
+      "type": "lead",
+      "name": "Pachannabis Grow",
+      "email": "",
+      "whatsapp": "+59824131497",
+      "city": "Montevideo",
+      "state": "",
+      "note": "Growshop (Constituyente y Gaboto) — seeds, cultivation supplies, parafernalia (source: findglocal.com/UY/Montevideo/963777963703060/Pachannabis-Grow)"
     }
   ],
   "Paraguay": [
@@ -308,28 +349,67 @@
     {
       "type": "lead",
       "name": "Tienda Casper",
-      "email": "",
+      "email": "contacto@tiendacasper.com.py",
       "city": "Ciudad del Este",
       "state": "",
-      "note": "Head shop — bongs, pipes, kits, hookahs, vapes, grinders, tobacco products (source: tiendacasper.com.py)"
+      "note": "Head shop — bongs, pipes, kits, hookahs, vapes, grinders, tobacco products (source: tiendacasper.com.py)",
+      "whatsapp": "+595994222230"
+    },
+    {
+      "type": "lead",
+      "name": "Under Haus",
+      "email": "",
+      "whatsapp": "+595991804593",
+      "city": "Asunción",
+      "state": "",
+      "note": "Vape & smoke shop (Villa Morra, Asunción) — bongs, pipes, papers, grinders, hookahs; nationwide delivery (source: underhaus.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Smoke Store Py (Cultivo Inteligente)",
+      "email": "",
+      "whatsapp": "+595984548200",
+      "city": "Ciudad del Este",
+      "state": "",
+      "note": "Self-described major Growshop/Headshop/Cigarshop distributor (Shopping Paris, Ciudad del Este) (source: instagram.com/smokestore.py)"
+    },
+    {
+      "type": "lead",
+      "name": "Nirvana Head Shop",
+      "email": "",
+      "whatsapp": "+595976527583",
+      "city": "Ciudad del Este",
+      "state": "",
+      "note": "Head shop / tabaquería (Av. Choferes del Chaco, Ciudad del Este) with home delivery (source: py.todosnegocios.com/nirvana-bar-headshop-0976-527583)"
+    },
+    {
+      "type": "lead",
+      "name": "Dragon Vape",
+      "email": "dragonvapeparaguay@gmail.com",
+      "whatsapp": "",
+      "city": "Ciudad del Este",
+      "state": "",
+      "note": "Vape & narguile shop with headshop category (Shopping Jebai Center, Ciudad del Este) (source: dragonvape.com.py)"
     }
   ],
   "Ecuador": [
     {
       "type": "lead",
       "name": "Smoke Lab Ecuador",
-      "email": "",
+      "email": "smokelabec@gmail.com",
       "city": "Guayaquil",
       "state": "",
-      "note": "Smoke shop — bongs, pipes, papers, grinders, vaporizers; ships across Ecuador (source: smokelabec.com)"
+      "note": "Smoke shop — bongs, pipes, papers, grinders, vaporizers; ships across Ecuador (source: smokelabec.com)",
+      "whatsapp": "+593993898219"
     },
     {
       "type": "lead",
       "name": "Smoke Zone Ecuador",
-      "email": "",
+      "email": "ventas@smokezoneec.com",
       "city": "Loja",
       "state": "",
-      "note": "Smoke shop/growshop w/ store in Loja — vaporizers, bongs, pipes, papers, blunts, grinders; national shipping (source: smokezoneec.com)"
+      "note": "Smoke shop/growshop w/ store in Loja — vaporizers, bongs, pipes, papers, blunts, grinders; national shipping (source: smokezoneec.com)",
+      "whatsapp": "+593995636174"
     },
     {
       "type": "lead",
@@ -352,7 +432,7 @@
     {
       "type": "lead",
       "name": "Green House Bolivia",
-      "email": "",
+      "email": "info@greenhousebolivia.store",
       "city": "Cochabamba",
       "state": "",
       "note": "Online smoking-articles store — papers/blunts/wraps, bongs, glass/silicone/metal pipes, grinders; national shipping (source: greenhousebolivia.store)"
@@ -364,13 +444,40 @@
       "city": "",
       "state": "",
       "note": "Bolivian growshop — cultivation supplies & smoking accessories (source: instagram.com/proganjagrowshop)"
+    },
+    {
+      "type": "lead",
+      "name": "Stash Bolivia",
+      "email": "hola@stashbolivia.com",
+      "whatsapp": "+59169755913",
+      "city": "La Paz",
+      "state": "",
+      "note": "La Paz smoke shop (Auquisamaña) — bongs, water pipes, hand pipes, vaporizers, accessories (source: stashbolivia.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Roll Bo",
+      "email": "",
+      "whatsapp": "+59172132336",
+      "city": "",
+      "state": "",
+      "note": "Online smoke shop — grinders, glass bongs, pipes, vaporizers, rolling papers; shipping throughout Bolivia (source: roll-bo.com)"
+    },
+    {
+      "type": "lead",
+      "name": "La Boutique del Fumador Bolivia",
+      "email": "",
+      "whatsapp": "",
+      "city": "",
+      "state": "",
+      "note": "Active Bolivian smoke shop (Instagram/Facebook) — smoking accessories (source: instagram.com/laboutiquedelfumadorbolivia)"
     }
   ],
   "Venezuela": [
     {
       "type": "lead",
       "name": "Smokerolla Venezuela",
-      "email": "",
+      "email": "cs@smokerolla.com",
       "city": "Caracas",
       "state": "",
       "note": "Caracas smoke shop (since 2009) — blunt papers, bongs, vaporizers; pickup & delivery (source: smokerolla.com)"
@@ -378,10 +485,11 @@
     {
       "type": "lead",
       "name": "San Luis Cigars",
-      "email": "",
+      "email": "ventas.sanluiscigars@gmail.com",
       "city": "Caracas",
       "state": "",
-      "note": "Venezuela distributor of premium cigars & high-end smoking accessories; lounges in Caracas & Valencia (source: sanluiscigars.com)"
+      "note": "Venezuela distributor of premium cigars & high-end smoking accessories; lounges in Caracas & Valencia (source: sanluiscigars.com)",
+      "whatsapp": "+584244186249"
     },
     {
       "type": "lead",
@@ -389,7 +497,8 @@
       "email": "",
       "city": "Caracas",
       "state": "",
-      "note": "Official Habanos S.A. distributor for Venezuela — premium cigars & accessories (source: cigarsvenezuela.com)"
+      "note": "Official Habanos S.A. distributor for Venezuela — premium cigars & accessories (source: cigarsvenezuela.com)",
+      "whatsapp": "+584127547679"
     },
     {
       "type": "lead",
@@ -431,7 +540,8 @@
       "email": "",
       "city": "Casablanca",
       "state": "",
-      "note": "Casablanca vape shop — e-cigs, e-liquids, pods, mods, accessories; delivery throughout Morocco (source: good-vapes.ma)"
+      "note": "Casablanca vape shop — e-cigs, e-liquids, pods, mods, accessories; delivery throughout Morocco (source: good-vapes.ma)",
+      "whatsapp": "+212666196267"
     },
     {
       "type": "lead",
@@ -480,7 +590,7 @@
     {
       "type": "lead",
       "name": "Vamp",
-      "email": "",
+      "email": "Contact@vamp.ng",
       "city": "Lagos",
       "state": "",
       "note": "Self-described Nigeria's most trusted smoke shop — bongs, dab rigs, pipes, chillums, bubblers, grinders, papers, shisha, vapes; 100+ brands (source: vamp.ng)"
@@ -491,7 +601,8 @@
       "email": "",
       "city": "Lagos",
       "state": "",
-      "note": "Online vape & smoke shop — vaporizers, dry herb vapes, pods, e-liquids, HEETS, hookah/shisha; delivery in PH/Lagos/Abuja (source: reyvape.com)"
+      "note": "Online vape & smoke shop — vaporizers, dry herb vapes, pods, e-liquids, HEETS, hookah/shisha; delivery in PH/Lagos/Abuja (source: reyvape.com)",
+      "whatsapp": "+2348036393888"
     },
     {
       "type": "lead",
@@ -516,6 +627,263 @@
       "city": "Lagos",
       "state": "",
       "note": "Ikeja vape shop — vape kits, pod systems, e-liquids, nic salts, disposables, dry herb vaporizers, accessories (source: vapology.com.ng)"
+    }
+  ],
+  "Egypt": [
+    {
+      "type": "lead",
+      "name": "El Moaez",
+      "email": "Info@elmo3ez.com",
+      "whatsapp": "+201114449242",
+      "city": "Cairo",
+      "state": "",
+      "note": "Online hookah/shisha retailer — shisha pipes, Al Fakher/Mazaya/Al Nakhla tobacco, charcoal, accessories; nationwide delivery (source: elmo3ez.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Khalil Maamoon",
+      "email": "info@khalilmaamoon.net",
+      "whatsapp": "+201117000556",
+      "city": "Cairo",
+      "state": "",
+      "note": "Historic hookah manufacturer/wholesaler (est. 1873) — handmade shisha pipes, tobacco, accessories; factory in Obour City (source: khalilmaamoon.net)"
+    },
+    {
+      "type": "lead",
+      "name": "OKA Egypt",
+      "email": "",
+      "whatsapp": "",
+      "city": "Cairo",
+      "state": "",
+      "note": "Egyptian brand — portable hookahs, stems, bowls, hoses, coal, 15+ tobacco flavors via online store (source: okaegypt.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Egyptian Glass Smokeshop",
+      "email": "",
+      "whatsapp": "",
+      "city": "Cairo",
+      "state": "",
+      "note": "Maadi (Cairo) head shop — e-liquids, mods, rolling papers, hookahs, grinders, glass pipes, oil rigs, vapes (source: facebook.com/p/Egyptian-Glass-Smokeshop-100063680733445)"
+    },
+    {
+      "type": "lead",
+      "name": "Smoke Shop Egypt",
+      "email": "",
+      "whatsapp": "",
+      "city": "Cairo",
+      "state": "",
+      "note": "Cairo smoke/head shop — smoking accessories and tobacco products via Facebook business page (source: facebook.com/SmokeShopEG)"
+    }
+  ],
+  "Kenya": [
+    {
+      "type": "lead",
+      "name": "Fancy Puffs Smoke Shop",
+      "email": "",
+      "whatsapp": "",
+      "city": "Nairobi",
+      "state": "",
+      "note": "Self-described #1 smoke shop in East Africa — bongs, grinders, papers, pipes, vaporizers, lighters, ashtrays; same/next-day Nairobi delivery (source: fancypuffs.co.ke)"
+    },
+    {
+      "type": "lead",
+      "name": "Shop 420 Kenya",
+      "email": "",
+      "whatsapp": "+254774456642",
+      "city": "Nairobi",
+      "state": "",
+      "note": "Online smoke & vape shop (Ngong Rd) — bongs, glass pipes, grinders, papers, cones, wraps, vapes, CBD; same-day dispatch (source: shop420.co.ke)"
+    },
+    {
+      "type": "lead",
+      "name": "Vapesoko Nairobi",
+      "email": "sales@vapesoko.co.ke",
+      "whatsapp": "+254716592999",
+      "city": "Nairobi",
+      "state": "",
+      "note": "Nairobi online vape shop — disposables, pod kits, mods, e-liquids, nic salts (SMOK/Vaporesso/Elf Bar); same-day delivery (source: vapesoko.co.ke)"
+    },
+    {
+      "type": "lead",
+      "name": "Mombasa Shisha & Bongs",
+      "email": "",
+      "whatsapp": "+254117037140",
+      "city": "Mombasa",
+      "state": "",
+      "note": "Mombasa retailer — premium shisha/hookah pipes, coals, flavors, bongs, vapes, accessories; M-Pesa/COD (source: mombasashishabongs.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Hookah Supplies Kenya",
+      "email": "",
+      "whatsapp": "",
+      "city": "Nairobi",
+      "state": "",
+      "note": "Nairobi shisha supplier — hookahs, shisha flavors, coals, accessories at wholesale and retail (source: hookahsupplies.co.ke)"
+    }
+  ],
+  "Ghana": [
+    {
+      "type": "lead",
+      "name": "VapeHouse GH",
+      "email": "",
+      "whatsapp": "+233209152718",
+      "city": "Accra",
+      "state": "",
+      "note": "East Legon (Accra) smoke & vape shop — vapes, e-liquids, smoking accessories; tel +233544606514 (source: instagram.com/vapehousegh)"
+    },
+    {
+      "type": "lead",
+      "name": "DG Link Smoker's Center",
+      "email": "",
+      "whatsapp": "",
+      "city": "Accra",
+      "state": "",
+      "note": "Premium smoke/vape store in Osu, Accra — vapes, e-liquids, vape accessories; phone +233545857917 (source: gh.africabz.com/greater-accra/dg-link-vape-shop-517996)"
+    },
+    {
+      "type": "lead",
+      "name": "GhanaSmoke.Mall",
+      "email": "",
+      "whatsapp": "+233501145375",
+      "city": "Accra",
+      "state": "",
+      "note": "Accra online smoke shop — smoking accessories, bongs, pipes, wraps; call/WhatsApp ordering (source: instagram.com/smokes_gh)"
+    },
+    {
+      "type": "lead",
+      "name": "VaPe BuddY GH",
+      "email": "",
+      "whatsapp": "+233543361605",
+      "city": "Accra",
+      "state": "",
+      "note": "Accra shop — vaporizers, grinders, blunt wraps, bongs, pipes, shisha flavors (source: facebook.com/vapebuddygh)"
+    },
+    {
+      "type": "lead",
+      "name": "Vape Shop GH",
+      "email": "",
+      "whatsapp": "",
+      "city": "Accra",
+      "state": "",
+      "note": "Walk-in vape shop in central Accra — vapes and smoking accessories (source: instagram.com/the.vapeshopgh)"
+    }
+  ],
+  "Zambia": [
+    {
+      "type": "lead",
+      "name": "Zambia Vapes",
+      "email": "ivgzambia@gmail.com",
+      "whatsapp": "+260776016334",
+      "city": "Lusaka",
+      "state": "",
+      "note": "Vape retail chain (EastPark/Lewanika/Pinnacle/Mukuba/Kamwala) — vapes and smoking accessories (source: eastparkmallzambia.com/portfolios/zambia-vapes)"
+    },
+    {
+      "type": "lead",
+      "name": "The Smoke Shop ZM",
+      "email": "thesmokeshop2022@gmail.com",
+      "whatsapp": "",
+      "city": "Lusaka",
+      "state": "",
+      "note": "Lusaka smoke/e-cigarette shop — vaping and smoking accessories; active Facebook page (source: facebook.com/thesmokeshopzm)"
+    },
+    {
+      "type": "lead",
+      "name": "The Vape Café",
+      "email": "",
+      "whatsapp": "",
+      "city": "Lusaka",
+      "state": "",
+      "note": "Lusaka vape shop — e-cigarettes, vape juice, shisha, accessories with Lusaka delivery (source: facebook.com/vapecafezambia)"
+    },
+    {
+      "type": "lead",
+      "name": "Vape King Zambia",
+      "email": "",
+      "whatsapp": "+260978109006",
+      "city": "Lusaka",
+      "state": "",
+      "note": "Lusaka vape retailer at EastPark — vapes and accessories (source: instagram.com/vapekingzambia)"
+    }
+  ],
+  "Zimbabwe": [
+    {
+      "type": "lead",
+      "name": "Up In Smoke Zim",
+      "email": "",
+      "whatsapp": "+2638644777000",
+      "city": "Harare",
+      "state": "",
+      "note": "Smoke/vape shop (GT Bain Centre, Avondale, Harare) — vapes plus bongs and pipes (source: vape.co.zw)"
+    },
+    {
+      "type": "lead",
+      "name": "Atmos Zimbabwe",
+      "email": "",
+      "whatsapp": "+263772135222",
+      "city": "Harare",
+      "state": "",
+      "note": "Vape retailer at Sam Levy's Village, Borrowdale, Harare — online store + Facebook (source: atmos.co.zw)"
+    },
+    {
+      "type": "lead",
+      "name": "Clouds To You",
+      "email": "",
+      "whatsapp": "",
+      "city": "Harare",
+      "state": "",
+      "note": "Electronic-cigarette/tobacconist with Churchill and Avondale branches, Harare (source: facebook.com/Clouds2You)"
+    },
+    {
+      "type": "lead",
+      "name": "Vape.co.zw",
+      "email": "",
+      "whatsapp": "",
+      "city": "Harare",
+      "state": "",
+      "note": "Zimbabwe online vape shop — kits, e-liquids, accessories; Harare and countrywide delivery (source: vape.co.zw)"
+    }
+  ],
+  "Malawi": [
+    {
+      "type": "lead",
+      "name": "The Vape Lounge",
+      "email": "",
+      "whatsapp": "",
+      "city": "Blantyre",
+      "state": "",
+      "note": "Blantyre one-stop vape shop — vaping products, spares, liquids; active Facebook page (source: facebook.com/p/The-Vape-Lounge-Blantyre-100057161031080)"
+    },
+    {
+      "type": "lead",
+      "name": "Musketeer Vapes Malawi",
+      "email": "",
+      "whatsapp": "",
+      "city": "Lilongwe",
+      "state": "",
+      "note": "Lilongwe vape retailer with active Instagram/Facebook business pages (source: instagram.com/musketeer_vapes_malawi)"
+    }
+  ],
+  "Lesotho": [
+    {
+      "type": "lead",
+      "name": "MG Health Limited",
+      "email": "",
+      "whatsapp": "",
+      "city": "Maseru",
+      "state": "",
+      "note": "EU-GMP licensed medical cannabis cultivator/manufacturer — potential accessory/packaging buyer (source: mghealth.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Medi Kingdom",
+      "email": "",
+      "whatsapp": "",
+      "city": "Maseru",
+      "state": "",
+      "note": "Holder of Lesotho's first cannabis cultivation/manufacture licence (source: medikingdom.com)"
     }
   ]
 }

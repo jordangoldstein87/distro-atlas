@@ -21,6 +21,7 @@ Each entry has a name plus these optional fields:
 | ----- | -------- | ----- |
 | Name | yes | shown in the panel, tooltip, and CSV |
 | Email | no | contact address; shown as a `✉` mailto link and in CSV |
+| WhatsApp | no | phone in international format; shown as a `✆` wa.me link and in CSV |
 | City | no | shown as a tag chip next to the name and in the tooltip |
 | State / Region | no | shown as a tag chip and in the tooltip |
 | Avg sales / month | no | distributors only; number, shown as a green `$/mo` chip and summed per country |
@@ -61,7 +62,7 @@ USA, West Coast Wholesale, Los Angeles, CA, 12000, net-30 terms
 
 ## CSV export
 **Export CSV** writes one row per entry (distributors and leads) with columns:
-`Country, Type, Name, City, State, Email, Avg Sales/Month, Note`.
+`Country, Type, Name, City, State, Email, WhatsApp, Avg Sales/Month, Note`.
 
 ## Host it on GitHub Pages
 1. Create a new repository (e.g. `distro-atlas`).
