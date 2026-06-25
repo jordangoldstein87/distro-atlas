@@ -1,13 +1,6 @@
 {
   "Canada": [
     {
-      "name": "West Coast Gifts",
-      "city": "Vancouver",
-      "state": "",
-      "sales": 25000,
-      "note": ""
-    },
-    {
       "name": "Smoke Arsenal",
       "city": "Toronto",
       "state": "",
