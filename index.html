@@ -487,7 +487,14 @@ async function fetchShared(){
   return null;
 }
 async function loadData(){
-  // 1) this browser's working copy (lets an editor keep unsaved changes)
+  // If this browser auto-publishes to the repo, the repo IS the source of truth,
+  // so prefer the shared data.json — updates committed elsewhere then show up on a
+  // plain refresh (no "Load shared" needed). Edits here still auto-publish back.
+  if(pub && pub.enabled && pub.token){
+    const shared = await fetchShared();
+    if(shared){ try{ localStorage.setItem(LS_KEY, JSON.stringify(shared)); }catch(e){} return shared; }
+  }
+  // 1) this browser's working copy (lets a non-publishing editor keep unsaved changes)
   try{ const ls = localStorage.getItem(LS_KEY); if(ls) return JSON.parse(ls); }catch(e){}
   // 2) shared data.json committed to the repo (what new viewers see)
   const shared = await fetchShared();
