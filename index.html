@@ -104,6 +104,7 @@
   .country{stroke:var(--ocean);stroke-width:.4px;vector-effect:non-scaling-stroke;transition:fill .12s ease}
   .country.cov0{fill:var(--red)}
   .country.cov1{fill:var(--green)}
+  .country.cov2{fill:#7c4dd0}
   .country:hover{filter:brightness(1.25)}
   .country.sel{stroke:var(--accent);stroke-width:1.6px}
   .sphere{fill:none}
@@ -128,7 +129,7 @@
     backdrop-filter:blur(6px);font-size:12px}
   .legend .it{display:flex;align-items:center;gap:7px;color:var(--dim)}
   .legend .sw{width:13px;height:13px;border-radius:3px}
-  .legend .sw.g{background:var(--green)} .legend .sw.r{background:var(--red)}
+  .legend .sw.g{background:var(--green)} .legend .sw.r{background:var(--red)} .legend .sw.p{background:#7c4dd0}
 
   /* tooltip */
   .tip{position:fixed;pointer-events:none;z-index:60;max-width:260px;
@@ -291,7 +292,8 @@
       </div>
       <div class="legend">
         <div class="it"><span class="sw g"></span>Has distributor</div>
-        <div class="it"><span class="sw r"></span>No distributor</div>
+        <div class="it"><span class="sw p"></span>Leads only</div>
+        <div class="it"><span class="sw r"></span>No coverage</div>
       </div>
     </div>
 
@@ -642,7 +644,7 @@ function updateLabels(){
       const name = d.properties.name;
       if(name === selected) return null;                                // selected always labeled
       const readable = renderedPx(d) >= LABEL_MIN_READ;                 // hide names too small to read
-      if(!d._small && distrosFor(name).length > 0) return readable ? null : 'none';  // large covered
+      if(!d._small && (distrosFor(name).length > 0 || leadsFor(name).length > 0)) return readable ? null : 'none';  // large covered or prospect
       if(currentK <= LABEL_ZOOM_THRESHOLD) return 'none';               // small/uncovered: need zoom first
       return readable ? null : 'none';
     });
@@ -651,8 +653,11 @@ function updateLabels(){
 function refreshColors(){
   gCountries.selectAll('path.country')
     .attr('class', d => {
-      const cov = distrosFor(d.properties.name).length > 0 ? 'cov1':'cov0';
-      const sel = d.properties.name === selected ? ' sel':'';
+      const n = d.properties.name;
+      const cov = distrosFor(n).length > 0 ? 'cov1'        // green: has a distributor
+                : leadsFor(n).length   > 0 ? 'cov2'        // amber: leads only (prospect)
+                : 'cov0';                                  // red: nothing
+      const sel = n === selected ? ' sel':'';
       return `country ${cov}${sel}`;
     });
   // keep selected on top
