@@ -70,6 +70,50 @@
       "whatsapp": "+541122627551",
       "category": "Distributor",
       "website": "https://parainfernalia.com.ar"
+    },
+    {
+      "type": "lead",
+      "name": "Distrifull",
+      "category": "Distributor",
+      "website": "https://www.distrifull.com.ar/",
+      "email": "info@distrifull.com.ar",
+      "whatsapp": "+5491134024000",
+      "city": "CABA, Buenos Aires",
+      "state": "",
+      "note": "Wholesale — 'empresa argentina líder en la distribución mayorista de tabacos, cigarros y accesorios' (source: distrifull.com.ar)"
+    },
+    {
+      "type": "lead",
+      "name": "Don Juan Distribuidor",
+      "category": "Distributor",
+      "website": "https://donjuandistribuidor.com.ar/",
+      "email": "",
+      "whatsapp": "",
+      "city": "Buenos Aires",
+      "state": "",
+      "note": "Wholesale + retail parafernalia distributor — vende por mayor y menor, supplies kioscos, grows y estaciones de servicio (source: donjuandistribuidor.com.ar)"
+    },
+    {
+      "type": "lead",
+      "name": "Distribuidora El Pulpo SRL",
+      "category": "Distributor",
+      "website": "https://distripulpo.ar/",
+      "email": "ventasweb@distripulpo.com.ar",
+      "whatsapp": "",
+      "city": "CABA, Buenos Aires",
+      "state": "",
+      "note": "Wholesale distributor of parafernalia, tabacos y accesorios for kioscos/growshops (mayorista); tel +54 11 5331 2110 (source: distripulpo.ar)"
+    },
+    {
+      "type": "lead",
+      "name": "Conex Distribuidora",
+      "category": "Distributor",
+      "website": "https://conexdistribuidora.store/",
+      "email": "",
+      "whatsapp": "",
+      "city": "Mar del Plata, Buenos Aires",
+      "state": "",
+      "note": "Wholesale — 'Mayorista Tabaquería & Grow', 3500+ products for kioscos, tabaquerías y growshops, envíos a todo el país; tel +54 223 422-1372 (source: conexdistribuidora.store)"
     }
   ],
   "Germany": [
@@ -167,6 +211,50 @@
       "note": "Tobacco shop/headshop — papers, bongs, grinders, pipes, lighters; ships nationwide (source: madrugashop.com)",
       "category": "Head shop",
       "website": "https://madrugashop.com"
+    },
+    {
+      "type": "lead",
+      "name": "Tabacaria BT (Blacktiger)",
+      "category": "Distributor",
+      "website": "https://atacado.tabacariabt.com.br/",
+      "email": "",
+      "whatsapp": "",
+      "city": "Guarulhos, SP",
+      "state": "",
+      "note": "Wholesale distributor of tobacconist/headshop products since 2017 — 'atacado para todo o Brasil', wholesale prices for lojistas/revendedores (source: atacado.tabacariabt.com.br)"
+    },
+    {
+      "type": "lead",
+      "name": "Só Carbura Tabacaria (atacado)",
+      "category": "Distributor",
+      "website": "https://www.socarburatacado.com.br/",
+      "email": "",
+      "whatsapp": "",
+      "city": "Blumenau, SC",
+      "state": "",
+      "note": "Wholesale importer — 'importador líder de produtos de tabacaria no atacado', serves resellers nationwide, 12+ yrs; tel +55 47 3237-5684 (source: socarburatacado.com.br)"
+    },
+    {
+      "type": "lead",
+      "name": "Adoro Mato",
+      "category": "Distributor",
+      "website": "https://www.adoromato.com/atacado",
+      "email": "contato@adoromato.com",
+      "whatsapp": "+5521989015220",
+      "city": "Rio de Janeiro, RJ",
+      "state": "",
+      "note": "Wholesale + retail headshop/tabacaria; dedicated atacado section with display quantities (10/25/50) for resellers (source: adoromato.com/atacado)"
+    },
+    {
+      "type": "lead",
+      "name": "Tabacaria da Mata (atacado)",
+      "category": "Distributor",
+      "website": "https://www.tabacariadamata.com.br/atacado-e-kits.html",
+      "email": "",
+      "whatsapp": "",
+      "city": "São Paulo, SP",
+      "state": "",
+      "note": "Wholesale 'Atacado de Tabacaria' — bulk sedas (RAW/OCB/Smoking), filtros, piteiras, dichavadores for revenda; tel +55 11 3876-2113 (source: tabacariadamata.com.br)"
     }
   ],
   "Switzerland": [
@@ -229,6 +317,39 @@
       "note": "Online smoke shop — papers, filters, grinders, bongs, bubblers, vaporizers, tobacco, grow gear (source: bloommart.co)",
       "category": "Smoke shop",
       "website": "https://bloommart.co"
+    },
+    {
+      "type": "lead",
+      "name": "Smokerolla Colombia",
+      "category": "Distributor",
+      "website": "https://co.smokerolla.com/",
+      "email": "colombia@smokerolla.com",
+      "whatsapp": "+573009294229",
+      "city": "Medellín",
+      "state": "",
+      "note": "B2B wholesale of smoking accessories (papers, bongs, grinders, vapers) to Colombian smoke shops — 'inventario mayorista B2B' (US-parented, Colombia arm) (source: co.smokerolla.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Mercannábico",
+      "category": "Distributor",
+      "website": "https://mercannabico.com/",
+      "email": "cuentas@mercannabico.com",
+      "whatsapp": "+573170129141",
+      "city": "Bogotá",
+      "state": "",
+      "note": "Wholesale smoke-shop marketplace/distributor — 'precios al por mayor', 'conviértete en distribuidor', nationwide (source: mercannabico.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Smoke Shop Colombia",
+      "category": "Distributor",
+      "website": "https://smokeshopcolombia.com/",
+      "email": "",
+      "whatsapp": "",
+      "city": "Colombia",
+      "state": "",
+      "note": "Wholesale pricing to resellers — 'precio para mayoristas después de 24 artículos', envíos a toda Colombia (source: smokeshopcolombia.com)"
     }
   ],
   "Chile": [
@@ -258,7 +379,7 @@
       "city": "",
       "state": "",
       "note": "Growshop chain — pipes, glass/silicone bongs, grinders, papers, vaporizers (source: delaferia.cl)",
-      "category": "Growshop",
+      "category": "Distributor",
       "website": "https://delaferia.cl"
     },
     {
@@ -271,6 +392,39 @@
       "whatsapp": "+56939311563",
       "category": "Growshop",
       "website": "https://fumetas.cl"
+    },
+    {
+      "type": "lead",
+      "name": "Mobimo",
+      "category": "Distributor",
+      "website": "https://mobimochile.cl/288-parafernalia-por-mayor",
+      "email": "",
+      "whatsapp": "+56944174634",
+      "city": "Santiago",
+      "state": "",
+      "note": "Wholesale distributor of parafernalia & vaporizers (pipes, bongs, papers, lighters) 'al por mayor' (source: mobimochile.cl)"
+    },
+    {
+      "type": "lead",
+      "name": "AllGrano Distribución",
+      "category": "Distributor",
+      "website": "https://www.allgrano.com/",
+      "email": "ventas@allgrano.com",
+      "whatsapp": "+56958167870",
+      "city": "Chile",
+      "state": "",
+      "note": "Mayorista with B2B sales-executive model, despacho todo Chile — seeds plus parafernalia/growshop accessories (source: allgrano.com)"
+    },
+    {
+      "type": "lead",
+      "name": "Quema Distribución",
+      "category": "Distributor",
+      "website": "https://www.quemadistribucion.cl/",
+      "email": "",
+      "whatsapp": "",
+      "city": "Chile",
+      "state": "",
+      "note": "'Parafernalia al por mayor' — bongs, grinders, pipas and OCB papers at wholesale to shops (source: quemadistribucion.cl)"
     }
   ],
   "New Zealand": [
@@ -302,7 +456,7 @@
       "city": "Lima",
       "state": "",
       "note": "Lima smoke shop — bongs, water pipes, vaporizers, grinders, rolling papers, grow supplies (source: apegos.com.pe/smoke)",
-      "category": "Smoke shop",
+      "category": "Distributor",
       "website": "https://apegos.com.pe/smoke"
     },
     {
@@ -335,7 +489,7 @@
       "state": "",
       "note": "Montevideo growshop — nutrients, indoor gear & accessories for growers, cannabis clubs, retailers (source: urugrow.com.uy)",
       "whatsapp": "+59891024420",
-      "category": "Growshop",
+      "category": "Distributor",
       "website": "https://urugrow.com.uy"
     },
     {
@@ -346,7 +500,7 @@
       "city": "Montevideo",
       "state": "",
       "note": "Grow & smoke shop (since 2013, Montevideo + Punta del Este) — RAW/OCB/Clipper papers, bongs, pipes, cultivation gear (source: mediagrow.com.uy)",
-      "category": "Smoke shop",
+      "category": "Distributor",
       "website": "https://mediagrow.com.uy"
     },
     {
@@ -381,6 +535,17 @@
       "note": "Growshop (Constituyente y Gaboto) — seeds, cultivation supplies, parafernalia (source: findglocal.com/UY/Montevideo/963777963703060/Pachannabis-Grow)",
       "category": "Growshop",
       "website": "https://findglocal.com/UY/Montevideo/963777963703060/Pachannabis-Grow"
+    },
+    {
+      "type": "lead",
+      "name": "California Company",
+      "category": "Distributor",
+      "website": "https://californiacompany.uy/",
+      "email": "",
+      "whatsapp": "",
+      "city": "Montevideo",
+      "state": "",
+      "note": "Largest grow store in Uruguay (300m²), special wholesale prices for cannabis clubs; wide parafernalia range (bongs, pipes, papers), Maldonado 1220 (source: californiacompany.uy)"
     }
   ],
   "Paraguay": [
@@ -644,6 +809,28 @@
       "note": "Marrakech vape shop — e-cigarettes, e-liquids, vaping accessories; delivery across Morocco (source: facebook.com/vapelab.ma)",
       "category": "Cigar/Tobacco",
       "website": "https://facebook.com/vapelab.ma"
+    },
+    {
+      "type": "lead",
+      "name": "Aroma Vape",
+      "category": "Distributor",
+      "website": "https://aromavape.net/",
+      "email": "contact@aromavape.net",
+      "whatsapp": "",
+      "city": "Casablanca",
+      "state": "",
+      "note": "Grossiste — import & distribution of e-cigarettes, e-liquids, chicha/shisha and charbon to resellers; tel +212 666810804 (source: aromavape.net)"
+    },
+    {
+      "type": "lead",
+      "name": "Vaprotex SARL",
+      "category": "Distributor",
+      "website": "https://vaprotex.ma/",
+      "email": "",
+      "whatsapp": "",
+      "city": "Rabat",
+      "state": "",
+      "note": "Official distributor/grossiste of e-cigarettes & e-liquids to Moroccan shops (supports opening new stores), Agdal, Rabat; tel +212 653632623 (source: vaprotex.ma)"
     }
   ],
   "South Africa": [
@@ -686,6 +873,39 @@
       "note": "Online smoke shop — glass bongs, water pipes, dab rigs, pipes, papers, grinders, dry-herb vaporizers (source: 420.co.za)",
       "category": "Smoke shop",
       "website": "https://420.co.za"
+    },
+    {
+      "type": "lead",
+      "name": "The High Co",
+      "category": "Distributor",
+      "website": "https://thehighco.co.za/wholesale-bongs-and-rolling-papers/",
+      "email": "",
+      "whatsapp": "",
+      "city": "Johannesburg",
+      "state": "",
+      "note": "Wholesale distributor of bongs, rolling papers, grinders, dab rigs — wholesale accounts for resellers/retailers only, min order R2000, JHB showroom (source: thehighco.co.za)"
+    },
+    {
+      "type": "lead",
+      "name": "OTP Distributors (Pty) Ltd",
+      "category": "Distributor",
+      "website": "https://www.otpd.co.za/",
+      "email": "info@otpd.co.za",
+      "whatsapp": "",
+      "city": "Cape Town",
+      "state": "",
+      "note": "Trade-only distributor of tobacco products & smoking accessories to wholesalers, tobacconists and formal retail across Southern Africa; tel +27 21 905 4905 (source: otpd.co.za)"
+    },
+    {
+      "type": "lead",
+      "name": "Bhika Imports",
+      "category": "Distributor",
+      "website": "https://bhikaimports.co.za/",
+      "email": "info@bhikaimports.co.za",
+      "whatsapp": "",
+      "city": "Pinetown (Durban)",
+      "state": "",
+      "note": "Strictly wholesale importer/distributor to retail trade — rolling papers (RAW/Rizla/OCB), hookah, glass/acrylic bongs, grinders, pipes; min order R3000; tel +27 31 701 2073 (source: bhikaimports.co.za)"
     }
   ],
   "Nigeria": [
@@ -717,7 +937,7 @@
       "city": "Lagos",
       "state": "",
       "note": "Smoke/vape retailer, stores in Lekki (Lagos) & Wuse (Abuja) — e-cigs, pod vapes, mods, disposables, e-liquid, accessories (source: 420cultureng.com)",
-      "category": "Vape shop",
+      "category": "Distributor",
       "website": "https://420cultureng.com"
     },
     {
@@ -739,6 +959,17 @@
       "note": "Ikeja vape shop — vape kits, pod systems, e-liquids, nic salts, disposables, dry herb vaporizers, accessories (source: vapology.com.ng)",
       "category": "Vape shop",
       "website": "https://vapology.com.ng"
+    },
+    {
+      "type": "lead",
+      "name": "Wigmore Wholesale (Wigmore Trading)",
+      "category": "Distributor",
+      "website": "https://wigmorewholesale.com/lighters-smoking-accessories",
+      "email": "",
+      "whatsapp": "",
+      "city": "Lagos (Ikoyi)",
+      "state": "",
+      "note": "Pan-African wholesale supplier/importer of lighters & smoking accessories (RAW, Zippo, BIC) serving retailers in Nigeria/Ghana/West Africa; Ikoyi, Lagos (source: wigmorewholesale.com)"
     }
   ],
   "Egypt": [
@@ -853,6 +1084,17 @@
       "note": "Nairobi shisha supplier — hookahs, shisha flavors, coals, accessories at wholesale and retail (source: hookahsupplies.co.ke)",
       "category": "Distributor",
       "website": "https://hookahsupplies.co.ke"
+    },
+    {
+      "type": "lead",
+      "name": "Moran Vapes",
+      "category": "Distributor",
+      "website": "https://moranvapes.co.ke/",
+      "email": "sales@moranvapes.co.ke",
+      "whatsapp": "+254748584202",
+      "city": "Nairobi",
+      "state": "",
+      "note": "Vape wholesaler in Kenya with flexible MOQs for new retailers; also stocks smoking accessories (source: moranvapes.co.ke)"
     }
   ],
   "Ghana": [
@@ -1342,6 +1584,17 @@
       "note": "Retailer — bongs, pipes, vaporizers, rolling papers, grinders, CBD products (source: crgreenlife.com)",
       "category": "Smoke shop",
       "website": "https://crgreenlife.com"
+    },
+    {
+      "type": "lead",
+      "name": "Purple Express",
+      "category": "Distributor",
+      "website": "https://purpleexpressonline.com/",
+      "email": "",
+      "whatsapp": "+50686948888",
+      "city": "San José",
+      "state": "",
+      "note": "Retail chain with 'Socios Mayoristas' wholesale program — bongs, glass pipes, grinders, papers, vaporizers (RAW/Puffco/PAX/Storz & Bickel); ships nationwide (source: purpleexpressonline.com)"
     }
   ],
   "Panama": [
@@ -1377,6 +1630,28 @@
       "note": "Vape & smoke shop — papers, filters, pipes/accessories, tobacco; nationwide delivery (source: smokeapanama.com)",
       "category": "Vape shop",
       "website": "https://smokeapanama.com"
+    },
+    {
+      "type": "lead",
+      "name": "Aryan Internacional Zona Libre",
+      "category": "Distributor",
+      "website": "https://www.compraenzonalibre.com/",
+      "email": "ventas@aryanzl.com",
+      "whatsapp": "",
+      "city": "Colón (Zona Libre)",
+      "state": "",
+      "note": "Wholesale duty-free importer/distributor in Colón Free Zone — pipes, rolling papers, lighters, grinders, hookah, scales; supplies merchants across LatAm & Caribbean; tel +507 474-5505 (source: colonfreezone.com/listing/aryan-internacional-zona-libre)"
+    },
+    {
+      "type": "lead",
+      "name": "Vaping Latam",
+      "category": "Distributor",
+      "website": "https://www.vapinglatam.com/",
+      "email": "",
+      "whatsapp": "",
+      "city": "Colón (Zona Libre)",
+      "state": "",
+      "note": "Wholesale B2B distributor in Colón Free Zone supplying retailers across 40+ LatAm countries (vaping-focused) (source: vapinglatam.com)"
     }
   ],
   "Nicaragua": [
@@ -1561,6 +1836,17 @@
       "note": "Vape/paraphernalia shop — kiosks at Gardenmall and Metrocentro; free nationwide shipping; IG @karlostylevaping (source: instagram.com/karlostylevaping)",
       "category": "Vape shop",
       "website": "https://instagram.com/karlostylevaping"
+    },
+    {
+      "type": "lead",
+      "name": "Vape Cloud",
+      "category": "Distributor",
+      "website": "https://vapecloudsv.online/",
+      "email": "",
+      "whatsapp": "+50360617264",
+      "city": "San Salvador",
+      "state": "",
+      "note": "Wholesale to distribuidores y tiendas with volume discounts and exclusive catalog (vaping-focused); nationwide shipping (source: vapecloudsv.online)"
     }
   ],
   "Belize": [
