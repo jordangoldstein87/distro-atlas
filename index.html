@@ -178,12 +178,16 @@
   .distro .tag-chip{font-family:var(--mono);font-size:10.5px;line-height:1.4;color:var(--dim);
     background:#0e141d;border:1px solid var(--line-2);border-radius:5px;padding:1px 6px;white-space:nowrap}
   .distro .tag-chip.state{color:var(--accent);border-color:#4a4126;background:#171206}
+  .distro .tag-chip.cat{color:var(--dim);border-color:var(--line-2);background:#141b26}
+  .distro .tag-chip.cat.dist{color:#dfe7ff;border-color:#3a5bd0;background:#111a33;font-weight:600}
   .distro .tag-chip.sales{color:var(--green-bright);border-color:#1f5a36;background:#0d1c14}
   .distro .d-note{font-size:12px;color:var(--dim);margin-top:4px;word-break:break-word}
   .distro .d-contacts{display:flex;flex-direction:column;gap:2px;margin-top:4px}
   .distro .d-email{font-size:12px;color:#a9bdff;text-decoration:none;word-break:break-all}
   .distro .d-wa{font-size:12px;color:var(--green-bright);text-decoration:none;word-break:break-all}
-  .distro .d-email:hover,.distro .d-wa:hover{text-decoration:underline}
+  .distro .d-web{font-size:12px;color:var(--accent);text-decoration:none;word-break:break-all}
+  .distro .d-email:hover,.distro .d-wa:hover,.distro .d-web:hover{text-decoration:underline}
+  .sec-label .hid{color:var(--faint);text-transform:none;letter-spacing:0}
   .distro.lead{border-left:3px solid #7c4dd0;background:#15101f}
   .distro.lead .d-name::after{content:"LEAD";margin-left:7px;font-family:var(--mono);font-size:8.5px;
     letter-spacing:.1em;color:#c79bf2;border:1px solid #473066;border-radius:4px;padding:1px 4px;vertical-align:middle}
@@ -208,6 +212,7 @@
   .btn.primary:hover{background:var(--green-bright)}
   .btn.ghost{background:var(--raised);color:var(--text);border:1px solid var(--line-2)}
   .btn.ghost:hover{border-color:var(--dim)}
+  .filter-btn.on{background:#111a33;color:#dfe7ff;border-color:#3a5bd0}
 
   .empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;height:100%;color:var(--faint);padding:30px;gap:10px}
@@ -306,6 +311,7 @@
         </div>
       </div>
       <div class="foot">
+        <button class="btn ghost filter-btn" id="distFilterBtn">⚑ Distributors only</button>
         <button class="btn ghost" id="bulkBtn">Bulk add</button>
         <button class="btn ghost" id="exportBtn">Export CSV</button>
         <button class="btn ghost" id="saveJsonBtn">⤓ Save data.json</button>
@@ -512,6 +518,13 @@ function entriesFor(name){ return data[name] || []; }
 function isLead(x){ return x && x.type === 'lead'; }
 function distrosFor(name){ return entriesFor(name).filter(x=>!isLead(x)); }  // actual distributors only
 function leadsFor(name){ return entriesFor(name).filter(isLead); }
+// business category / "distributors only" filter
+function isDistribLead(x){ return (x.category||'') === 'Distributor'; }
+function shownLeadsFor(name){ return distOnly ? leadsFor(name).filter(isDistribLead) : leadsFor(name); }
+function webLabel(u){ return String(u).replace(/^https?:\/\//,'').replace(/\/+$/,''); }
+function webUrl(u){ u=String(u).trim(); return /^https?:\/\//.test(u) ? u : 'https://'+u; }
+let distOnly = false;
+try{ distOnly = localStorage.getItem('distro_atlas_distonly') === '1'; }catch(e){}
 // avg sales / month helpers
 function parseSales(v){
   if(v==null) return 0;
@@ -644,7 +657,7 @@ function updateLabels(){
       const name = d.properties.name;
       if(name === selected) return null;                                // selected always labeled
       const readable = renderedPx(d) >= LABEL_MIN_READ;                 // hide names too small to read
-      if(!d._small && (distrosFor(name).length > 0 || leadsFor(name).length > 0)) return readable ? null : 'none';  // large covered or prospect
+      if(!d._small && (distrosFor(name).length > 0 || shownLeadsFor(name).length > 0)) return readable ? null : 'none';  // large covered or prospect
       if(currentK <= LABEL_ZOOM_THRESHOLD) return 'none';               // small/uncovered: need zoom first
       return readable ? null : 'none';
     });
@@ -654,8 +667,8 @@ function refreshColors(){
   gCountries.selectAll('path.country')
     .attr('class', d => {
       const n = d.properties.name;
-      const cov = distrosFor(n).length > 0 ? 'cov1'        // green: has a distributor
-                : leadsFor(n).length   > 0 ? 'cov2'        // amber: leads only (prospect)
+      const cov = distrosFor(n).length > 0   ? 'cov1'      // green: has a distributor
+                : shownLeadsFor(n).length > 0 ? 'cov2'      // purple: leads (distributor-only when filtered)
                 : 'cov0';                                  // red: nothing
       const sel = n === selected ? ' sel':'';
       return `country ${cov}${sel}`;
@@ -739,12 +752,15 @@ function renderPanel(){
 
   const entryHTML = (o, lead) => {
     const x=o.x, sales=Number(x.sales)||0;
-    const tags = (x.city?`<span class="tag-chip">${esc(x.city)}</span>`:'')
+    const cat = x.category?`<span class="tag-chip cat${isDistribLead(x)?' dist':''}">${esc(x.category)}</span>`:'';
+    const tags = cat
+               + (x.city?`<span class="tag-chip">${esc(x.city)}</span>`:'')
                + (x.state?`<span class="tag-chip state">${esc(x.state)}</span>`:'')
                + (!lead && sales>0?`<span class="tag-chip sales">${fmtMoney(sales)}/mo</span>`:'');
+    const web = x.website?`<a class="d-web" href="${esc(webUrl(x.website))}" target="_blank" rel="noopener">🔗 ${esc(webLabel(x.website))}</a>`:'';
     const email = x.email?`<a class="d-email" href="mailto:${esc(x.email)}">✉ ${esc(x.email)}</a>`:'';
     const wa = x.whatsapp?`<a class="d-wa" href="https://wa.me/${esc(String(x.whatsapp).replace(/[^0-9]/g,''))}" target="_blank" rel="noopener">✆ ${esc(x.whatsapp)}</a>`:'';
-    const contacts = (email||wa)?`<div class="d-contacts">${email}${wa}</div>`:'';
+    const contacts = (web||email||wa)?`<div class="d-contacts">${web}${email}${wa}</div>`:'';
     return `
     <div class="distro${lead?' lead':''}">
       <div class="d-main">
@@ -769,9 +785,12 @@ function renderPanel(){
         <span class="rt-label">Total avg sales / month</span>
         <span class="rt-val">${fmtMoney(regionTotal(selected))}</span>
       </div>` : '';
+  const shownLeads = distOnly ? leads.filter(o=>isDistribLead(o.x)) : leads;
+  const hiddenLeads = leads.length - shownLeads.length;
   const leadSection = leads.length ? `
-      <div class="sec-label">Leads · ${leads.length}</div>
-      <div class="distro-list">${leads.map(o=>entryHTML(o,true)).join('')}</div>` : '';
+      <div class="sec-label">Leads · ${shownLeads.length}${distOnly?' distributor'+(shownLeads.length===1?'':'s'):''}${distOnly&&hiddenLeads?` <span class="hid">· ${hiddenLeads} retail hidden</span>`:''}</div>
+      ${shownLeads.length?`<div class="distro-list">${shownLeads.map(o=>entryHTML(o,true)).join('')}</div>`
+        :`<p class="panel-empty">No distributor-type leads here — ${hiddenLeads} retail lead${hiddenLeads===1?'':'s'} hidden by the filter.</p>`}` : '';
   const emptyMsg = (!dists.length && !leads.length)
     ? `<p class="panel-empty">No distributors or leads here yet — add the first one below.</p>` : '';
 
@@ -794,6 +813,19 @@ function renderPanel(){
             </select>
           </div>
           <div class="row"><label>Name</label><input id="dName" type="text" placeholder="e.g. West Coast Wholesale" /></div>
+          <div class="row"><label>Category</label>
+            <select id="dCat">
+              <option value="">— unspecified —</option>
+              <option value="Distributor">Distributor / Wholesaler</option>
+              <option value="Cigar/Tobacco">Cigar / Tobacco</option>
+              <option value="Growshop">Growshop</option>
+              <option value="Head shop">Head shop</option>
+              <option value="Smoke shop">Smoke shop</option>
+              <option value="Vape shop">Vape shop</option>
+              <option value="Hookah/Shisha">Hookah / Shisha</option>
+            </select>
+          </div>
+          <div class="row"><label>Website (optional)</label><input id="dWeb" type="text" autocomplete="off" placeholder="example.com" /></div>
           <div class="row"><label>Email (optional)</label><input id="dEmail" type="email" autocomplete="off" placeholder="contact@company.com" /></div>
           <div class="row"><label>WhatsApp (optional)</label><input id="dWa" type="text" autocomplete="off" placeholder="+1 555 123 4567" /></div>
           <div class="row"><label>City</label><input id="dCity" type="text" placeholder="e.g. Los Angeles" /></div>
@@ -807,7 +839,7 @@ function renderPanel(){
 
   el.querySelectorAll('.del').forEach(b=> b.addEventListener('click', ()=> removeDistro(+b.dataset.i)));
   const typeS=el.querySelector('#dType'), salesRow=el.querySelector('#salesRow'), addBtn=el.querySelector('#addBtn');
-  const nameI=el.querySelector('#dName'), emailI=el.querySelector('#dEmail'), waI=el.querySelector('#dWa'),
+  const nameI=el.querySelector('#dName'), webI=el.querySelector('#dWeb'), emailI=el.querySelector('#dEmail'), waI=el.querySelector('#dWa'),
         cityI=el.querySelector('#dCity'), stateI=el.querySelector('#dState'), salesI=el.querySelector('#dSales'), noteI=el.querySelector('#dNote');
   function syncType(){
     const lead = typeS.value==='lead';
@@ -816,19 +848,21 @@ function renderPanel(){
   }
   typeS.addEventListener('change', syncType); syncType();
   addBtn.addEventListener('click', addDistro);
-  [nameI,emailI,waI,cityI,stateI,salesI,noteI].forEach(inp=> inp.addEventListener('keydown', e=>{ if(e.key==='Enter') addDistro(); }));
+  [nameI,webI,emailI,waI,cityI,stateI,salesI,noteI].forEach(inp=> inp.addEventListener('keydown', e=>{ if(e.key==='Enter') addDistro(); }));
 }
 function addDistro(){
   const nameI=document.getElementById('dName'); if(!nameI) return;
   const name=nameI.value.trim(); if(!name) return;
   const type=document.getElementById('dType').value==='lead'?'lead':'distributor';
+  const category=document.getElementById('dCat').value;
+  const website=document.getElementById('dWeb').value.trim();
   const email=document.getElementById('dEmail').value.trim();
   const whatsapp=document.getElementById('dWa').value.trim();
   const city=document.getElementById('dCity').value.trim();
   const state=document.getElementById('dState').value.trim();
   const note=document.getElementById('dNote').value.trim();
   if(!data[selected]) data[selected]=[];
-  const entry={type, name, email, whatsapp, city, state, note};
+  const entry={type, name, category, website, email, whatsapp, city, state, note};
   if(type!=='lead') entry.sales=parseSales(document.getElementById('dSales').value);
   data[selected].push(entry);
   persist(); refreshColors(); updateStats(); renderPanel();
@@ -879,10 +913,20 @@ document.getElementById('zin').onclick=()=> svg.transition().duration(250).call(
 document.getElementById('zout').onclick=()=> svg.transition().duration(250).call(zoom.scaleBy,1/1.5);
 document.getElementById('zreset').onclick=()=> svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
 
+// ---------- distributors-only filter ----------
+const distFilterBtn=document.getElementById('distFilterBtn');
+function syncDistFilterBtn(){ distFilterBtn.classList.toggle('on', distOnly); distFilterBtn.textContent=(distOnly?'⚑ Distributors only ✓':'⚑ Distributors only'); }
+distFilterBtn.onclick=()=>{
+  distOnly=!distOnly;
+  try{ localStorage.setItem('distro_atlas_distonly', distOnly?'1':'0'); }catch(e){}
+  syncDistFilterBtn(); refreshColors(); if(selected) renderPanel();
+};
+syncDistFilterBtn();
+
 // ---------- export / bulk ----------
 document.getElementById('exportBtn').onclick=()=>{
-  const rows=[['Country','Type','Name','City','State','Email','WhatsApp','Avg Sales/Month','Note']];
-  Object.keys(data).sort().forEach(c=> data[c].forEach(d=> rows.push([c, isLead(d)?'Lead':'Distributor', d.name, d.city||'', d.state||'', d.email||'', d.whatsapp||'', isLead(d)?'':((Number(d.sales)||0)||''), d.note||''])));
+  const rows=[['Country','Type','Category','Name','City','State','Website','Email','WhatsApp','Avg Sales/Month','Note']];
+  Object.keys(data).sort().forEach(c=> data[c].forEach(d=> rows.push([c, isLead(d)?'Lead':'Distributor', d.category||'', d.name, d.city||'', d.state||'', d.website||'', d.email||'', d.whatsapp||'', isLead(d)?'':((Number(d.sales)||0)||''), d.note||''])));
   const csv=rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob=new Blob([csv],{type:'text/csv'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
